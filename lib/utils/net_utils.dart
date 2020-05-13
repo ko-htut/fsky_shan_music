@@ -78,7 +78,7 @@ class NetUtils {
 
   static Future<bann.Banner> getBannerData() async {
        var response =
-        await _dio.post("http://dashboard.fskymusic.com/public/api/banner");
+        await _dio.get("http://dashboard.fskymusic.com/public/api/banner");
     return bann.Banner.fromJson(response.data);
   }
 
