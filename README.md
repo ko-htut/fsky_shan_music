@@ -53,3 +53,32 @@ music details (get)  : /songs
   "url" : "http://www.getdropbox.com/u/2/screencast.html"
 }
 ```
+
+artic search (post) : /search  ()
+body :(form-data)
+```
+name : articname
+```
+```javascript
+{
+    "data": [
+        {
+            "id": 27,
+            "cover": "http://dashboard.fskymusic.com/source/song/cover/1838534983.JPG",
+            "name": "ဢၢႆႈလႅင်း ပဵၼ် AIK LENG",
+            "artist": {
+                "artist_name": "သႅင်လႅင်းမိူင်း",
+                "artist_detail": "http://dashboard.fskymusic.com/api/artist/6"
+            },
+            "album": {
+                "album_name": "ႁူဝ်ၸႂ်လဵၵ်ႉၼွႆႉ",
+                "album_detail": "http://dashboard.fskymusic.com/api/album/6"
+            },
+            "lyric": null,
+            "source": "http://dashboard.fskymusic.com/source/song/mp3/2023815807.MP3",
+            "detail": "http://dashboard.fskymusic.com/api/song/27"
+        }
+       
+    ]
+}
+```
