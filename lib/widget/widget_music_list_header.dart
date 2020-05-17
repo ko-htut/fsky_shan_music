@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fsky_music/provider/play_songs_model.dart';
-import 'package:flutter_fsky_music/widget/decription_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 

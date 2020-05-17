@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fsky_music/utils/navigator_util.dart';
-import 'package:flutter_fsky_music/utils/net_utils.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
 
 import '../application.dart';
 

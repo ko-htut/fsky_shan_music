@@ -1,14 +1,9 @@
 import 'dart:async';
-import 'dart:convert';
-
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_fsky_music/model/song_model.dart';
-import 'package:flutter_fsky_music/model/song_play.dart';
 import 'package:flutter_fsky_music/utils/fluro_convert_utils.dart';
-
 import '../application.dart';
-import '../utils/net_utils.dart';
 
 class PlaySongsModel with ChangeNotifier {
   AudioPlayer _audioPlayer = AudioPlayer();
@@ -74,7 +69,7 @@ class PlaySongsModel with ChangeNotifier {
 
   /// 播放
   void play() async {
-    var songId = this._songs[curIndex].id;
+    // var songId = this._songs[curIndex].id;
     // var url = await NetUtils.getMusicURL(null, songId);
     var url = this._songs[curIndex].source;
     _audioPlayer.play(url);
@@ -125,7 +120,6 @@ class PlaySongsModel with ChangeNotifier {
     play();
   }
 
-  // 保存当前歌曲到本地
   void saveCurSong() {
     Application.sp.remove('playing_songs');
     Application.sp.setStringList('playing_songs',

@@ -1,9 +1,6 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_fsky_music/model/user.dart';
-import 'package:flutter_fsky_music/utils/net_utils.dart';
-
 import '../application.dart';
 
 class UserModel with ChangeNotifier {

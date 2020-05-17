@@ -3,11 +3,9 @@ import 'package:flutter_fsky_music/model/album_model.dart';
 import 'package:flutter_fsky_music/utils/navigator_util.dart';
 import 'package:flutter_fsky_music/utils/net_utils.dart';
 import 'package:flutter_fsky_music/widget/common_text_style.dart';
-import 'package:flutter_fsky_music/widget/h_empty_view.dart';
 import 'package:flutter_fsky_music/widget/rounded_net_image.dart';
 import 'package:flutter_fsky_music/widget/v_empty_view.dart';
 import 'package:flutter_fsky_music/widget/widget_future_builder.dart';
-import 'package:flutter_fsky_music/widget/widget_play_list.dart';
 import 'package:flutter_screenutil/screenutil.dart';
 
 class AlbumPage extends StatefulWidget {

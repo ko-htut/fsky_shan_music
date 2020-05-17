@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_fsky_music/model/album_model.dart';
 import 'package:flutter_fsky_music/model/song_play.dart';
 import 'package:flutter_fsky_music/provider/play_songs_model.dart';
-import 'package:flutter_fsky_music/widget/decription_widget.dart';
-import 'package:flutter_fsky_music/widget/v_empty_view.dart';
 import 'package:flutter_fsky_music/widget/widget_album_appbar.dart';
 import 'package:flutter_fsky_music/widget/widget_music_list_item.dart';
 import 'package:flutter_read_more_text/flutter_read_more_text.dart';
@@ -80,32 +78,5 @@ class _AlbumShowState extends State<AlbumShow> {
         )
       ],
     ));
-  }
-}
-
-class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
-  final PreferredSize child;
-
-  _SliverAppBarDelegate({this.child});
-
-  @override
-  Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
-    // TODO: implement build
-    return child;
-  }
-
-  @override
-  // TODO: implement maxExtent
-  double get maxExtent => child.preferredSize.height;
-
-  @override
-  // TODO: implement minExtent
-  double get minExtent => child.preferredSize.height;
-
-  @override
-  bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) {
-    // TODO: implement shouldRebuild
-    return false;
   }
 }

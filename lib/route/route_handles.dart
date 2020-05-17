@@ -2,7 +2,6 @@ import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_fsky_music/model/album_model.dart';
 import 'package:flutter_fsky_music/page/album/album_show.dart';
-import 'package:flutter_fsky_music/page/home/home_page.dart';
 import 'package:flutter_fsky_music/page/index.dart';
 import 'package:flutter_fsky_music/page/login_page.dart';
 import 'package:flutter_fsky_music/page/play/music_play_page.dart';

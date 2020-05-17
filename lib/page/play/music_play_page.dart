@@ -22,10 +22,10 @@ class MusicPlayPage extends StatefulWidget {
 
 class _MusicPlayPageState extends State<MusicPlayPage> 
   with TickerProviderStateMixin {
-  AnimationController _controller; // 封面旋转控制器
-  AnimationController _stylusController; //唱针控制器
+  AnimationController _controller; 
+  AnimationController _stylusController;
   Animation<double> _stylusAnimation;
-  int switchIndex = 0; //用于切换歌词
+  int switchIndex = 0;
 
   @override
   void initState() {
@@ -37,7 +37,6 @@ class _MusicPlayPageState extends State<MusicPlayPage>
     _stylusAnimation =
         Tween<double>(begin: -0.03, end: -0.10).animate(_stylusController);
     _controller.addStatusListener((status) {
-      // 转完一圈之后继续
       if (status == AnimationStatus.completed) {
         _controller.reset();
         _controller.forward();
@@ -50,8 +49,6 @@ class _MusicPlayPageState extends State<MusicPlayPage>
     return Consumer<PlaySongsModel>(builder: (context, model, child) {
       var curSong = model.curSong;
       if (model.curState == AudioPlayerState.PLAYING) {
-        // 如果当前状态是在播放当中，则唱片一直旋转，
-        // 并且唱针是移除状态
         _controller.forward();
         _stylusController.reverse();
       } else {
@@ -138,24 +135,24 @@ class _MusicPlayPageState extends State<MusicPlayPage>
                                   ),
                                 ),
                               ),
-                              Align(
-                                child: RotationTransition(
-                                  turns: _stylusAnimation,
-                                  alignment: Alignment(
-                                      -1 +
-                                          (ScreenUtil().setWidth(45 * 2) /
-                                              (ScreenUtil().setWidth(293))),
-                                      -1 +
-                                          (ScreenUtil().setWidth(45 * 2) /
-                                              (ScreenUtil().setWidth(504)))),
-                                  child: Image.asset(
-                                    'images/bgm.png',
-                                    width: ScreenUtil().setWidth(205),
-                                    height: ScreenUtil().setWidth(352.8),
-                                  ),
-                                ),
-                                alignment: Alignment(0.25, -1),
-                              ),
+                              // Align(
+                              //   child: RotationTransition(
+                              //     turns: _stylusAnimation,
+                              //     alignment: Alignment(
+                              //         -1 +
+                              //             (ScreenUtil().setWidth(45 * 2) /
+                              //                 (ScreenUtil().setWidth(293))),
+                              //         -1 +
+                              //             (ScreenUtil().setWidth(45 * 2) /
+                              //                 (ScreenUtil().setWidth(504)))),
+                              //     child: Image.asset(
+                              //       'images/bgm.png',
+                              //       width: ScreenUtil().setWidth(205),
+                              //       height: ScreenUtil().setWidth(352.8),
+                              //     ),
+                              //   ),
+                              //   alignment: Alignment(0.25, -1),
+                              // ),
                             ],
                           ),
                           // LyricPage(model),
@@ -180,73 +177,6 @@ class _MusicPlayPageState extends State<MusicPlayPage>
       );
     });
   }
-
-  // Widget buildSongsHandle(PlaySongsModel model) {
-  //   return Container(
-  //     height: ScreenUtil().setWidth(100),
-  //     child: Row(
-  //       children: <Widget>[
-  //         ImageMenuWidget('images/icon_dislike.png', 80),
-  //         ImageMenuWidget(
-  //           'images/icon_song_download.png',
-  //           80,
-  //           onTap: () {},
-  //         ),
-  //         ImageMenuWidget(
-  //           'images/bfc.png',
-  //           80,
-  //           onTap: () {},
-  //         ),
-  //         Expanded(
-  //           child: Align(
-  //             child: Container(
-  //               width: ScreenUtil().setWidth(130),
-  //               height: ScreenUtil().setWidth(80),
-  //               child: CustomFutureBuilder<SongCommentData>(
-  //                 futureFunc: NetUtils.getSongCommentData,
-  //                 params: {'id': model.curSong.id, 'offset': 1},
-  //                 loadingWidget: Image.asset(
-  //                   'images/icon_song_comment.png',
-  //                   width: ScreenUtil().setWidth(80),
-  //                   height: ScreenUtil().setWidth(80),
-  //                 ),
-  //                 builder: (context, data) {
-  //                   return GestureDetector(
-  //                     onTap: () {
-  //                       NavigatorUtil.goCommentPage(context, data: CommentHead(model.curSong.picUrl, model.curSong.name, model.curSong.artists, data.total, model.curSong.id, CommentType.song.index));
-  //                     },
-  //                     child: Stack(
-  //                       alignment: Alignment.center,
-  //                       children: <Widget>[
-  //                         Image.asset(
-  //                           'images/icon_song_comment.png',
-  //                           width: ScreenUtil().setWidth(80),
-  //                           height: ScreenUtil().setWidth(80),
-  //                         ),
-  //                         Align(
-  //                           alignment: Alignment.topRight,
-  //                           child: Container(
-  //                             margin: EdgeInsets.only(top: ScreenUtil().setWidth(12)),
-  //                             width: ScreenUtil().setWidth(58),
-  //                             child: Text(
-  //                               '${NumberUtils.formatNum(data.total)}',
-  //                               style: common10White70TextStyle,
-  //                             ),
-  //                           ),
-  //                         )
-  //                       ],
-  //                     ),
-  //                   );
-  //                 },
-  //               ),
-  //             ),
-  //           ),
-  //         ),
-  //         ImageMenuWidget('images/icon_song_more.png', 80),
-  //       ],
-  //     ),
-  //   );
-  // }
 
   @override
   void dispose() {
