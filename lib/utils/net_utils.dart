@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_fsky_music/model/song.dart';
 import 'package:flutter_fsky_music/model/banner.dart' as bann;
 import 'package:flutter_fsky_music/model/top_model.dart';
+import 'package:flutter_fsky_music/model/album_model.dart' as ab;
 import 'package:flutter_fsky_music/model/user.dart';
 import 'package:flutter_fsky_music/route/navigate_service.dart';
 import 'package:flutter_fsky_music/route/routes.dart';
@@ -98,5 +99,13 @@ class NetUtils {
       "song",
     );
     return Top.fromJson(response.data);
+  }
+  static Future<ab.Album> getAlbum(BuildContext context,
+      {String i}) async {
+    var response = await _get(
+      context,
+      "album",
+    );
+    return ab.Album.fromJson(response.data);
   }
 }

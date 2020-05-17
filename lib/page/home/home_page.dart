@@ -6,7 +6,6 @@ import 'package:flutter_fsky_music/utils/net_utils.dart';
 import 'package:flutter_fsky_music/widget/widget_future_builder.dart';
 import 'package:flutter_fsky_music/widget/widget_music_list_item.dart';
 import 'package:flutter_fsky_music/widget/widget_play_list.dart';
-import 'package:flutter_fsky_music/widget/widget_sliver_future_builder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import '../../widget/common_text_style.dart';
@@ -89,7 +88,7 @@ class _HomePageState extends State<HomePage>
                   mvid: d.id,
                   index: index + 1,
                   songName: d.name,
-                  artists: d.artist.artistName,
+                  artists: "${d.artist.artistName} : ${d.album.albumName}",
                 ),
                 onTap: () {
                   // playSongs(model, index);
