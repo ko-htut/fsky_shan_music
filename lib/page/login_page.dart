@@ -6,7 +6,6 @@ import 'package:flutter_fsky_music/utils/utils.dart';
 import 'package:flutter_fsky_music/widget/common_button.dart';
 import 'package:flutter_fsky_music/widget/v_empty_view.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {

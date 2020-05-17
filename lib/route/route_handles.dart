@@ -1,41 +1,41 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_fsky_music/model/album_model.dart';
+import 'package:flutter_fsky_music/page/album/album_show.dart';
 import 'package:flutter_fsky_music/page/home/home_page.dart';
 import 'package:flutter_fsky_music/page/index.dart';
 import 'package:flutter_fsky_music/page/login_page.dart';
+import 'package:flutter_fsky_music/page/play/music_play_page.dart';
+import 'package:flutter_fsky_music/page/search/search_page.dart';
 import 'package:flutter_fsky_music/page/splash_page.dart';
+import 'package:flutter_fsky_music/utils/fluro_convert_utils.dart';
 
 
-// splash 页面
 var splashHandler = new Handler(
     handlerFunc: (BuildContext context, Map<String, List<Object>> params) {
-      return SplashPage();
-    });
+  return SplashPage();
+});
 
-// 登录页
 var loginHandler = new Handler(
     handlerFunc: (BuildContext context, Map<String, List<Object>> params) {
-      return LoginPage();
-    });
+  return LoginPage();
+});
 
-// 跳转到主页
 var indexHandler = new Handler(
     handlerFunc: (BuildContext context, Map<String, List<Object>> params) {
-      return IndexPage();
-    });
-
-
-// 跳转到搜索页面
+  return IndexPage();
+});
 var searchHandler = new Handler(
     handlerFunc: (BuildContext context, Map<String, List<Object>> params) {
-      // return SearchPage();
-    });
-
-// var lookImgHandler = new Handler(
-//     handlerFunc: (BuildContext context, Map<String, List<Object>> params) {
-//       List<String> imgs = FluroConvertUtils.fluroCnParamsDecode(params['imgs'].first).split(',');
-//       String index = params['index'].first;
-//       print(imgs);
-//       print(index);
-//       return LookImgPage(imgs, int.parse(index));
-//     });
+  return SearchPage();
+});
+var albumHandler = new Handler(
+    handlerFunc: (BuildContext context, Map<String, List<Object>> params) {
+  String data = params['data'].first;
+  return AlbumShow(data: Datum.fromJson(FluroConvertUtils.string2map(data)));
+});
+// MusicPlayPage
+var playHandler = new Handler(
+    handlerFunc: (BuildContext context, Map<String, List<Object>> params) {
+  return MusicPlayPage();
+});

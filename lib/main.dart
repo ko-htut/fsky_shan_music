@@ -16,7 +16,6 @@ void main() {
   Application.router = router;
   Application.setupLocator();
   LogUtil.init(tag: 'F_SKY_MUSIC');
-
   Provider.debugCheckInvalidValueType = null;
   runApp(MultiProvider(
     providers: [

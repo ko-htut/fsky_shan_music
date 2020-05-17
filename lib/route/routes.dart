@@ -10,7 +10,8 @@ class Routes {
   static String login = "/login";
   static String playSongs = "/play_songs";
   static String search = "/search";
-  static String lookImg = "/look_img";
+  static String albums = "/albums";
+  static String play = "/play";
 
   static void configureRoutes(Router router) {
     router.notFoundHandler = new Handler(
@@ -22,6 +23,7 @@ class Routes {
     router.define(login, handler: loginHandler);
     router.define(index, handler: indexHandler);
     router.define(search, handler: searchHandler);
-    // router.define(lookImg, handler: lookImgHandler);
+    router.define(albums, handler: albumHandler);
+    router.define(play, handler: playHandler);
   }
 }

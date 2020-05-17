@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fsky_music/page/album/album_page.dart';
 import 'package:flutter_fsky_music/page/home/home_page.dart';
+import 'package:flutter_fsky_music/utils/navigator_util.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class IndexPage extends StatefulWidget {
@@ -35,7 +36,7 @@ class _IndexPageState extends State<IndexPage> {
                 color: Colors.black87,
               ),
               onPressed: () {
-                // NavigatorUtil.goSearchPage(context);
+                NavigatorUtil.goSearchPage(context);
               },
             ),
           )

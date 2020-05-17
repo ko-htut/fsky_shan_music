@@ -1,7 +1,8 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_fsky_music/model/album_model.dart';
 import 'package:flutter_fsky_music/route/routes.dart';
-
+import 'package:flutter_fsky_music/utils/fluro_convert_utils.dart';
 
 import '../application.dart';
 
@@ -19,18 +20,27 @@ class NavigatorUtil {
         transition: TransitionType.material);
   }
 
-  /// 登录页
+  /// Login
   static void goLoginPage(BuildContext context) {
     _navigateTo(context, Routes.login, clearStack: true);
   }
 
-  /// 首页
+  /// Index
   static void goindexPage(BuildContext context) {
     _navigateTo(context, Routes.index, clearStack: true);
   }
-// 搜索页面
+
+  /// Search
   static void goSearchPage(BuildContext context) {
     _navigateTo(context, Routes.search);
   }
+  ///muic player page
+   static void goplay(BuildContext context) {
+    _navigateTo(context, Routes.play);
+  }
 
+  static void goAlbumShow(BuildContext context, Datum data) {
+    _navigateTo(context,
+        "${Routes.albums}?data=${FluroConvertUtils.object2string(data)}");
+  }
 }

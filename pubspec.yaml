@@ -27,7 +27,6 @@ dependencies:
   cookie_jar: ^1.0.1
   loading_more_list: ^1.0.5
   extended_text: ^0.7.1
-  shared_preferences: ^0.5.6+3
   page_transition: ^1.1.5
   dio: ^3.0.9
   get_it: ^4.0.1
@@ -35,6 +34,8 @@ dependencies:
   fluttertoast: ^4.0.1
   extended_image: ^0.7.2
   audioplayers: ^0.15.1
+  flutter_read_more_text: ^0.0.1
+  shared_preferences: ^0.5.7+2
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

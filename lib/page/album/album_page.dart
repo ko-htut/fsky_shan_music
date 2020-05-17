@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fsky_music/model/album_model.dart';
+import 'package:flutter_fsky_music/utils/navigator_util.dart';
 import 'package:flutter_fsky_music/utils/net_utils.dart';
 import 'package:flutter_fsky_music/widget/common_text_style.dart';
 import 'package:flutter_fsky_music/widget/h_empty_view.dart';
@@ -32,7 +33,7 @@ class _AlbumPageState extends State<AlbumPage> {
               return GestureDetector(
                 behavior: HitTestBehavior.translucent,
                 onTap: () {
-                  // toPlayListPage(d);
+                 NavigatorUtil.goAlbumShow(context, d);
                 },
                 child: Align(
                   alignment: Alignment.topCenter,

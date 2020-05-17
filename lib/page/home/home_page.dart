@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_fsky_music/model/song_model.dart';
 import 'package:flutter_fsky_music/model/song_play.dart';
 import 'package:flutter_fsky_music/model/top_model.dart';
 import 'package:flutter_fsky_music/provider/play_songs_model.dart';
+import 'package:flutter_fsky_music/utils/navigator_util.dart';
 import 'package:flutter_fsky_music/utils/net_utils.dart';
 import 'package:flutter_fsky_music/widget/widget_future_builder.dart';
 import 'package:flutter_fsky_music/widget/widget_music_list_item.dart';
@@ -20,8 +22,9 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage>
-    with TickerProviderStateMixin, AutomaticKeepAliveClientMixin {
+class _HomePageState extends State<HomePage> {
+  int _count;
+  Top data;
   Widget _buildBanner() {
     return CustomFutureBuilder<ba.Banner>(
       futureFunc: NetUtils.getBannerData,
@@ -44,27 +47,33 @@ class _HomePageState extends State<HomePage>
     return CustomFutureBuilder<Top>(
         futureFunc: NetUtils.getTopSong,
         builder: (context, snapshot) {
+          this.data = snapshot;
           var data = snapshot.data;
-          return Container(
-              height: ScreenUtil().setWidth(300),
-              child: ListView.separated(
-                separatorBuilder: (context, index) {
-                  return HEmptyView(ScreenUtil().setWidth(30));
-                },
-                padding:
-                    EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(15)),
-                itemBuilder: (context, index) {
-                  return PlayListWidget(
-                    text: data[index].name,
-                    picUrl: data[index].cover,
-                    subText: data[index].artist.artistName ?? "",
-                    maxLines: 1,
-                  );
-                },
-                shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                itemCount: data.length,
-              ));
+          return Consumer<PlaySongsModel>(builder: (context, model, child) {
+            return Container(
+                height: ScreenUtil().setWidth(300),
+                child: ListView.separated(
+                  separatorBuilder: (context, index) {
+                    return HEmptyView(ScreenUtil().setWidth(30));
+                  },
+                  padding: EdgeInsets.symmetric(
+                      horizontal: ScreenUtil().setWidth(15)),
+                  itemBuilder: (context, index) {
+                    return PlayListWidget(
+                      onTap: () {
+                        playSongs(model, index);
+                      },
+                      text: data[index].name,
+                      picUrl: data[index].cover,
+                      subText: data[index].artist.artistName ?? "",
+                      maxLines: 1,
+                    );
+                  },
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: data.length,
+                ));
+          });
         });
   }
 
@@ -72,6 +81,7 @@ class _HomePageState extends State<HomePage>
     return CustomFutureBuilder<Top>(
       futureFunc: NetUtils.getSong,
       builder: (context, data) {
+        this.data = data;
         return Consumer<PlaySongsModel>(builder: (context, model, child) {
           return ListView.separated(
             separatorBuilder: (context, index) {
@@ -91,7 +101,7 @@ class _HomePageState extends State<HomePage>
                   artists: "${d.artist.artistName} : ${d.album.albumName}",
                 ),
                 onTap: () {
-                  // playSongs(model, index);
+                  playSongs(model, index);
                 },
               );
             },
@@ -143,7 +153,29 @@ class _HomePageState extends State<HomePage>
     );
   }
 
-  @override
-  // TODO: implement wantKeepAlive
-  bool get wantKeepAlive => true;
+  void playSongs(PlaySongsModel model, int index) {
+    model.playSongs(
+      data.data
+          .map((r) => Song(
+              id: r.id,
+              name: r.name,
+              cover: r.album.albumName,
+              artist: r.artist.artistName,
+              lyric: r.lyric,
+              source: r.source))
+          .toList(),
+      index: index,
+    );
+    NavigatorUtil.goplay(context);
+  }
+
+  void setCount(int count) {
+    Future.delayed(Duration(milliseconds: 300), () {
+      if (mounted) {
+        setState(() {
+          _count = count;
+        });
+      }
+    });
+  }
 }
