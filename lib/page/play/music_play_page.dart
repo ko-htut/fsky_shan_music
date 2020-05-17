@@ -70,7 +70,7 @@ class _MusicPlayPageState extends State<MusicPlayPage>
                 sigmaX: 100,
               ),
               child: Container(
-                color: Colors.black38,
+                color: Colors.white,
                 width: double.infinity,
                 height: double.infinity,
               ),
@@ -160,8 +160,6 @@ class _MusicPlayPageState extends State<MusicPlayPage>
                       ),
                     ),
                   ),
-
-                  // buildSongsHandle(model),
                   Padding(
                     padding:
                     EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(30)),
