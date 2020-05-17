@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_fsky_music/model/song.dart';
 import 'package:flutter_fsky_music/model/banner.dart' as bann;
+import 'package:flutter_fsky_music/model/top_model.dart';
 import 'package:flutter_fsky_music/model/user.dart';
 import 'package:flutter_fsky_music/route/navigate_service.dart';
 import 'package:flutter_fsky_music/route/routes.dart';
@@ -76,18 +77,26 @@ class NetUtils {
     return Song.fromJson(response.data);
   }
 
-  static Future<bann.Banner> getBannerData() async {
+  static Future<bann.Banner> getBannerData(BuildContext context) async {
        var response =
-        await _dio.get("http://dashboard.fskymusic.com/public/api/banner");
+        await _get(context,"banner");
     return bann.Banner.fromJson(response.data);
   }
 
-  // static Future<AlbumSong> getAlbumSongData(BuildContext context,
-  //     {String i}) async {
-  //   var response = await _get(
-  //     context,
-  //     "album$i",
-  //   );
-  //   return AlbumSong.fromJson(response.data);
-  // }
+  static Future<Top> getTopSong(BuildContext context,
+      {String i}) async {
+    var response = await _get(
+      context,
+      "top",
+    );
+    return Top.fromJson(response.data);
+  }
+  static Future<Top> getSong(BuildContext context,
+      {String i}) async {
+    var response = await _get(
+      context,
+      "song",
+    );
+    return Top.fromJson(response.data);
+  }
 }
