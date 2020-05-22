@@ -9,7 +9,6 @@ import 'package:flutter_fsky_music/route/navigate_service.dart';
 import 'package:flutter_fsky_music/route/routes.dart';
 import 'package:flutter_fsky_music/utils/utils.dart';
 import 'package:flutter_fsky_music/widget/loading.dart';
-
 import '../application.dart';
 
 class NetUtils {
@@ -24,12 +23,37 @@ class NetUtils {
   }) async {
     if (isShowLoading) Loading.showLoading(context);
     try {
-      if (url == "login") {
-        return await _dio.post("$baseUrl$url", data: data);
-      }
       return await _dio.get(
         "$baseUrl$url",
       );
+    } on DioError catch (e) {
+      if (e == null) {
+        return Future.error(Response(data: -1));
+      } else if (e.response != null) {
+        if (e.response.statusCode >= 300 && e.response.statusCode < 400) {
+          _reLogin();
+          return Future.error(Response(data: -1));
+        } else {
+          return Future.value(e.response);
+        }
+      } else {
+        return Future.error(Response(data: -1));
+      }
+    } finally {
+      Loading.hideLoading(context);
+    }
+  }
+  static Future<Response> _post(
+    BuildContext context,
+    String url, {
+    Map<String, dynamic> params,
+    dynamic data,
+    bool isShowLoading = true,
+  }) async {
+    if (isShowLoading) Loading.showLoading(context);
+    try {
+       return await _dio.post("$baseUrl$url", data: data);
+
     } on DioError catch (e) {
       if (e == null) {
         return Future.error(Response(data: -1));
@@ -107,5 +131,13 @@ class NetUtils {
       "album",
     );
     return ab.Album.fromJson(response.data);
+  }
+  static Future<Top> getsearch(BuildContext context,
+      { String name}) async {
+    var response = await _post(
+      context,
+      "search?name=$name",
+    );
+    return Top.fromJson(response.data);
   }
 }

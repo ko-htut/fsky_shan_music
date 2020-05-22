@@ -135,24 +135,6 @@ class _MusicPlayPageState extends State<MusicPlayPage>
                                   ),
                                 ),
                               ),
-                              // Align(
-                              //   child: RotationTransition(
-                              //     turns: _stylusAnimation,
-                              //     alignment: Alignment(
-                              //         -1 +
-                              //             (ScreenUtil().setWidth(45 * 2) /
-                              //                 (ScreenUtil().setWidth(293))),
-                              //         -1 +
-                              //             (ScreenUtil().setWidth(45 * 2) /
-                              //                 (ScreenUtil().setWidth(504)))),
-                              //     child: Image.asset(
-                              //       'images/bgm.png',
-                              //       width: ScreenUtil().setWidth(205),
-                              //       height: ScreenUtil().setWidth(352.8),
-                              //     ),
-                              //   ),
-                              //   alignment: Alignment(0.25, -1),
-                              // ),
                             ],
                           ),
                           // LyricPage(model),

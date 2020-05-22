@@ -22,15 +22,11 @@ class PlaySongsModel with ChangeNotifier {
 
   void init() {
     _audioPlayer.setReleaseMode(ReleaseMode.STOP);
-    // 播放状态监听
     _audioPlayer.onPlayerStateChanged.listen((state) {
       _curState = state;
-
-      /// 先做顺序播放
       if (state == AudioPlayerState.COMPLETED) {
         nextPlay();
       }
-      // 其实也只有在播放状态更新时才需要通知。
       notifyListeners();
     });
     _audioPlayer.onDurationChanged.listen((d) {

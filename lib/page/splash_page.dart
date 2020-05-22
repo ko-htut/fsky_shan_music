@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fsky_music/utils/navigator_util.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../application.dart';
+import '../utils/net_utils.dart';
 
 class SplashPage extends StatefulWidget {
   @override
@@ -37,11 +37,10 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
   }
 
   void goPage() async{
-    // await Application.initSp();
+    await Application.initSp();
     // UserModel userModel = Provider.of<UserModel>(context);
     // userModel.initUser();
     // PlaySongsModel playSongsModel = Provider.of<PlaySongsModel>(context);
-    // // 判断是否有保存的歌曲列表
     // if(Application.sp.containsKey('playing_songs')){
     //   List<String> songs = Application.sp.getStringList('playing_songs');
     //   playSongsModel.addSongs(songs.map((s) => Song.fromJson(FluroConvertUtils.string2map(s))).toList());
@@ -61,7 +60,7 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    // NetUtils.init();
+    NetUtils;
     ScreenUtil.init(context, width: 750, height: 1334);
     final size = MediaQuery.of(context).size;
     Application.screenWidth = size.width;
