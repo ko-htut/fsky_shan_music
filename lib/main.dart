@@ -1,7 +1,9 @@
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:common_utils/common_utils.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_fsky_music/page/splash_page.dart';
 import 'package:flutter_fsky_music/provider/play_songs_model.dart';
 import 'package:flutter_fsky_music/provider/user_model.dart';
@@ -16,6 +18,7 @@ void main() {
   Application.router = router;
   Application.setupLocator();
   LogUtil.init(tag: 'F_SKY_MUSIC');
+  AudioPlayer.logEnabled = true;
   Provider.debugCheckInvalidValueType = null;
   runApp(MultiProvider(
     providers: [
@@ -23,7 +26,7 @@ void main() {
         create: (_) => UserModel(),
       ),
      ChangeNotifierProvider<PlaySongsModel>(
-        create: (_) => PlaySongsModel(),
+        create: (_) => PlaySongsModel()..init(),
       ),
     ],
     child: MyApp(),
@@ -33,9 +36,14 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+     SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
+     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+       statusBarColor: Colors.transparent,
+       // statusBarIconBrightness: Brightness.light,
+     ));
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'F Sky',
       navigatorKey: Application.getIt<NavigateService>().key,
       theme: ThemeData(
           brightness: Brightness.light,

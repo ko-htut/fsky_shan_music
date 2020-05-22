@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_fsky_music/page/Profile/profile_page.dart';
 import 'package:flutter_fsky_music/page/album/album_page.dart';
 import 'package:flutter_fsky_music/page/home/home_page.dart';
 import 'package:flutter_fsky_music/utils/navigator_util.dart';
@@ -13,7 +14,7 @@ class IndexPage extends StatefulWidget {
 
 class _IndexPageState extends State<IndexPage> {
   int _currentIndex = 0;
-  final List<Widget> _children = [HomePage(), AlbumPage(), Text("home 3")];
+  final List<Widget> _children = [HomePage(), AlbumPage(), ProfilePage()];
   void onTabTapped(int index) {
     setState(() {
       _currentIndex = index;

@@ -76,7 +76,7 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
           scale: _logoAnimation,
           child: Hero(
             tag: 'logo',
-            child: Image.asset('images/icon_logo.png'),
+            child: Image.asset('images/fskylogo.png'),
           ),
         ),
       ),
