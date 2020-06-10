@@ -31,7 +31,7 @@ class _AlbumPageState extends State<AlbumPage> {
               return GestureDetector(
                 behavior: HitTestBehavior.translucent,
                 onTap: () {
-                 NavigatorUtil.goAlbumShow(context, d);
+                  NavigatorUtil.goAlbumShow(context, d);
                 },
                 child: Align(
                   alignment: Alignment.topCenter,
@@ -45,7 +45,6 @@ class _AlbumPageState extends State<AlbumPage> {
                             '${d.cover}',
                             width: 200,
                             height: 200,
-                            radius: 5,
                           ),
                           Positioned(
                             bottom: 0,

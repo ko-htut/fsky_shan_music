@@ -13,7 +13,7 @@ import '../application.dart';
 
 class NetUtils {
   static Dio _dio = Dio();
-  static final String baseUrl = 'http://dashboard.fskymusic.com/api/';
+  static final String baseUrl = 'https://fskymusic.com/api/';
   static Future<Response> _get(
     BuildContext context,
     String url, {

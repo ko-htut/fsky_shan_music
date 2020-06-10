@@ -15,7 +15,6 @@ class UserModel with ChangeNotifier {
   }
 
   Future<User> login(BuildContext context, String email, String pwd) async {
-    // User user = await NetUtils.login(context, email, pwd);
     _saveUserInfo(user);
     return user;
   }

@@ -1,6 +1,7 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_fsky_music/model/album_model.dart';
+import 'package:flutter_fsky_music/model/song_model.dart' as s;
 import 'package:flutter_fsky_music/route/routes.dart';
 import 'package:flutter_fsky_music/utils/fluro_convert_utils.dart';
 
@@ -34,9 +35,12 @@ class NavigatorUtil {
   static void goSearchPage(BuildContext context) {
     _navigateTo(context, Routes.search);
   }
+   static void gostatePage(BuildContext context) {
+    _navigateTo(context, Routes.state);
+  }
   ///muic player page
-   static void goplay(BuildContext context) {
-    _navigateTo(context, Routes.play);
+   static void goplay(BuildContext context,s.Song song) {
+    _navigateTo(context, "${Routes.play}?song=${FluroConvertUtils.object2string(song)}");
   }
 
   static void goAlbumShow(BuildContext context, Datum data) {

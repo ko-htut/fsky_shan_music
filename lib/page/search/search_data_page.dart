@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_fsky_music/model/song_play.dart';
+import 'package:flutter_fsky_music/model/song_model.dart'as s;
 import 'package:flutter_fsky_music/model/top_model.dart';
+import 'package:flutter_fsky_music/utils/navigator_util.dart';
 import 'package:flutter_fsky_music/utils/net_utils.dart';
 import 'package:flutter_fsky_music/widget/widget_load_footer.dart';
 import 'package:flutter_fsky_music/widget/widget_music_list_item.dart';
@@ -51,7 +53,14 @@ class _SearchDataPageState extends State<SearchDataPage>
                   artists: "${curData.artist.artistName} : ${curData.album.albumName}",
                 ),
                 onTap: () {
-                  // playSongs(model, index);
+                   playSongs(s.Song(
+                    name: curData.name,
+                    artist: curData.artist.artistName,
+                    album: curData.album.albumName,
+                    source: curData.source,
+                    id: 1,
+                    cover: curData.cover,
+                    lyric: curData.lyric));
                 },
               );
     });
@@ -76,22 +85,10 @@ class _SearchDataPageState extends State<SearchDataPage>
   }
 
 
-  // void _playSongs(PlaySongsModel model, List<Songs> data, int index) {
-  //   model.playSongs(
-  //     data
-  //         .map((r) => prefix0.Song(
-  //               r.id,
-  //               name: r.name,
-  //               picUrl: r.album.picUrl.isEmpty
-  //                   ? r.album.artist.img1v1Url
-  //                   : r.album.picUrl,
-  //               artists: '${r.artists.map((a) => a.name).toList().join('/')}',
-  //             ))
-  //         .toList(),
-  //     index: index,
-  //   );
-  //   NavigatorUtil.goPlaySongsPage(context);
-  // }
+  void playSongs(s.Song songn) {
+    print(songn.source);
+    NavigatorUtil.goplay(context, songn);
+  }
 
   @override
   Widget build(BuildContext context) {

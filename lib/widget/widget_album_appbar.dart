@@ -2,7 +2,6 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_fsky_music/utils/utils.dart';
 import 'package:flutter_fsky_music/widget/widget_music_list_header.dart';
-
 import 'flexible_detail_bar.dart';
 
 class AlbumAppBarWidget extends StatelessWidget {
@@ -11,7 +10,7 @@ class AlbumAppBarWidget extends StatelessWidget {
   final String backgroundImg;
   final double sigma;
   final String title;
-  final PlayModelCallback playOnTap;
+  // final PlayModelCallback playOnTap;
   final int count;
 
   AlbumAppBarWidget({
@@ -20,7 +19,7 @@ class AlbumAppBarWidget extends StatelessWidget {
     @required this.content,
     @required this.backgroundImg,
     this.sigma = 2,
-    this.playOnTap,
+    // this.playOnTap,
     this.count,
   });
 
@@ -36,7 +35,7 @@ class AlbumAppBarWidget extends StatelessWidget {
      
       bottom: MusicListHeader(
         title: title,
-        onTap: playOnTap,
+        // onTap: playOnTap,
         count: count,
       ),
       flexibleSpace: FlexibleDetailBar(

@@ -26,7 +26,7 @@ class _IndexPageState extends State<IndexPage> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        title: Text('F Sky Music'),
+        title: Text('F-Sky Music'),
         actions: <Widget>[
           Container(
             // color: Colors.green,
@@ -46,20 +46,32 @@ class _IndexPageState extends State<IndexPage> {
       body: _children[_currentIndex], // new
       bottomNavigationBar: BottomNavigationBar(
         unselectedItemColor: Colors.grey,
-        selectedItemColor: Colors.red,
+        selectedItemColor: Colors.amber,
         onTap: onTabTapped, // new
         currentIndex: _currentIndex, // new
         items: [
           new BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Image.asset(
+                'images/musical.png',
+                height: ScreenUtil().setHeight(45),
+                width: ScreenUtil().setHeight(45),
+              ),
             title: Text('Home'),
           ),
           new BottomNavigationBarItem(
-            icon: Icon(Icons.mail),
+            icon: Image.asset(
+                'images/falbum.png',
+                height: ScreenUtil().setHeight(45),
+                width: ScreenUtil().setHeight(45),
+              ),
             title: Text('Album'),
           ),
           new BottomNavigationBarItem(
-              icon: Icon(Icons.person), title: Text('Profile'))
+              icon: Image.asset(
+                'images/popeye.png',
+                height: ScreenUtil().setHeight(50),
+                width: ScreenUtil().setHeight(50),
+              ), title: Text('Profile'))
         ],
       ),
     );

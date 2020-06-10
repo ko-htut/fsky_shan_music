@@ -103,10 +103,6 @@ class _FlexibleDetail extends InheritedWidget {
   }
 }
 
-///
-/// 用在 [FlexibleDetailBar.background]
-/// child上下滑动的时候会覆盖上黑色阴影
-///
 class FlexShadowBackground extends StatelessWidget {
   final Widget child;
 
