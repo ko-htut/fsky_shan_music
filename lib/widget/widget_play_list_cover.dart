@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../utils/utils.dart';
 
-/// 歌单、新碟上架等封面组件
 class PlayListCoverWidget extends StatelessWidget {
   final String url;
   final int playCount;

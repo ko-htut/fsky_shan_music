@@ -20,13 +20,13 @@ class LoadFooter extends Footer {
       return Container(
         height: ScreenUtil().setWidth(100),
         alignment: Alignment.center,
-        child: Text('暂无更多数据'),
+        child: Text('No more data'),
       );
     else
       return Container(
         height: ScreenUtil().setWidth(100),
         alignment: Alignment.center,
-        child: Text('正在加载...'),
+        child: Text('loading...'),
       );
   }
 }
