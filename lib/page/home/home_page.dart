@@ -4,6 +4,7 @@ import 'package:flutter_fsky_music/model/song_model.dart' as s;
 import 'package:flutter_fsky_music/model/song_model.dart';
 import 'package:flutter_fsky_music/model/song_play.dart';
 import 'package:flutter_fsky_music/model/top_model.dart';
+import 'package:flutter_fsky_music/provider/song_provider.dart';
 import 'package:flutter_fsky_music/utils/navigator_util.dart';
 import 'package:flutter_fsky_music/utils/net_utils.dart';
 import 'package:flutter_fsky_music/widget/widget_future_builder.dart';
@@ -51,36 +52,53 @@ class _HomePageState extends State<HomePage> {
         builder: (context, snapshot) {
           this.data = snapshot;
           var data = snapshot.data;
-          return Container(
-              height: ScreenUtil().setWidth(300),
-              child: ListView.separated(
-                separatorBuilder: (context, index) {
-                  return HEmptyView(ScreenUtil().setWidth(30));
-                },
-                padding:
-                    EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(15)),
-                itemBuilder: (context, index) {
-                  return PlayListWidget(
-                    onTap: () {
-                      playSongs(s.Song(
-                          name: data[index].name,
-                          artist: data[index].artist.artistName,
-                          album: data[index].album.albumName,
-                          source: data[index].source,
-                          id: index,
-                          cover: data[index].cover,
-                          lyric: data[index].lyric));
+          return Consumer<SongProvider>(
+            builder: (context, model, child) {
+              return Container(
+                  height: ScreenUtil().setWidth(300),
+                  child: ListView.separated(
+                    separatorBuilder: (context, index) {
+                      return HEmptyView(ScreenUtil().setWidth(30));
                     },
-                    text: data[index].name,
-                    picUrl: data[index].cover,
-                    subText: data[index].artist.artistName ?? "",
-                    maxLines: 1,
-                  );
-                },
-                shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                itemCount: data.length,
-              ));
+                    padding: EdgeInsets.symmetric(
+                        horizontal: ScreenUtil().setWidth(15)),
+                    itemBuilder: (context, index) {
+                      return PlayListWidget(
+                        onTap: () {
+                          playSongs(model,index);
+                        },
+                        text: data[index].name,
+                        picUrl: data[index].cover,
+                        subText: data[index].artist.artistName ?? "",
+                        maxLines: 1,
+                      );
+                    },
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    itemCount: data.length,
+                  ));
+              // return SliverList(
+              //   delegate: SliverChildBuilderDelegate(
+              //         (context, index) {
+              //       this.data = data;
+              //       var d = data.recommend[index];
+              //       return WidgetMusicListItem(
+              //         MusicData(
+              //             mvid: d.mvid,
+              //             picUrl: d.album.picUrl,
+              //             songName: d.name,
+              //             artists:
+              //             "${d.artists.map((a) => a.name).toList().join('/')} - ${d.album.name}"),
+              //         onTap: () {
+              //           playSongs(model, index);
+              //         },
+              //       );
+              //     },
+              //     childCount: data.recommend.length,
+              //   ),
+              // );
+            },
+          );
         });
   }
 
@@ -89,35 +107,32 @@ class _HomePageState extends State<HomePage> {
       futureFunc: NetUtils.getSong,
       builder: (context, data) {
         this.data = data;
-        return ListView.separated(
-          separatorBuilder: (context, index) {
-            return VEmptyView(ScreenUtil().setWidth(100));
-          },
-          itemCount: data.data.length,
-          shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
-          itemBuilder: (context, index) {
-            var d = data.data[index];
-            return WidgetMusicListItem(
-              MusicData(
-                picUrl: d.cover,
-                mvid: d.id,
-                index: index + 1,
-                songName: d.name,
-                artists: "${d.artist.artistName} : ${d.album.albumName}",
-              ),
-              onTap: () {
-                playSongs(s.Song(
-                    name: d.name,
-                    artist: d.artist.artistName,
-                    album: d.album.albumName,
-                    source: d.source,
-                    id: index,
-                    cover: d.cover,
-                    lyric: d.lyric));
-              },
-            );
-          },
+        return Consumer<SongProvider>(
+            builder: (context, model, child) {
+                  return ListView.separated(
+            separatorBuilder: (context, index) {
+              return VEmptyView(ScreenUtil().setWidth(100));
+            },
+            itemCount: data.data.length,
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            itemBuilder: (context, index) {
+              var d = data.data[index];
+              return WidgetMusicListItem(
+                MusicData(
+                  picUrl: d.cover,
+                  mvid: d.id,
+                  index: index + 1,
+                  songName: d.name,
+                  artists: "${d.artist.artistName} : ${d.album.albumName}",
+                ),
+                onTap: () {
+                  playSongs(model,index);
+                },
+              );
+            },
+          );
+            }
         );
       },
     );
@@ -165,9 +180,21 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  void playSongs(s.Song songn) {
-    print(songn.source);
-    NavigatorUtil.goplay(context, songn);
+    void playSongs(SongProvider model, int index) {
+    model.playSongs(
+      data.data
+          .map((r) => s.Song(
+                    name: r.name,
+                    artist: r.artist.artistName,
+                    album: r.album.albumName,
+                    source: r.source,
+                    id: 1,
+                    cover: r.cover,
+                    lyric: r.lyric))
+          .toList(),
+      index: index,
+    );
+    NavigatorUtil.goplay(context);
   }
 
   void setCount(int count) {

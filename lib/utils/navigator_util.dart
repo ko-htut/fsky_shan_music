@@ -39,8 +39,12 @@ class NavigatorUtil {
     _navigateTo(context, Routes.state);
   }
   ///muic player page
-   static void goplay(BuildContext context,s.Song song) {
-    _navigateTo(context, "${Routes.play}?song=${FluroConvertUtils.object2string(song)}");
+   static void goplay(BuildContext context) {
+    _navigateTo(context,Routes.play);
+  }
+
+  static void godownload(BuildContext context){
+    _navigateTo(context, Routes.download);
   }
 
   static void goAlbumShow(BuildContext context, Datum data) {

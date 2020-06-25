@@ -127,6 +127,13 @@ class _ProfilePageState extends State<ProfilePage> {
           title: Text("Facebook Page"),
         ),
         ListTile(
+          leading: Icon(Icons.cloud_download),
+          title: Text("Download"),
+          onTap: () {
+            NavigatorUtil.godownload(context);
+          },
+        ),
+        ListTile(
           leading: Icon(Icons.info),
           title: Text("About"),
         ),

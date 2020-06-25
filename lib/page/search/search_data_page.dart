@@ -87,7 +87,7 @@ class _SearchDataPageState extends State<SearchDataPage>
 
   void playSongs(s.Song songn) {
     print(songn.source);
-    NavigatorUtil.goplay(context, songn);
+    NavigatorUtil.goplay(context);
   }
 
   @override

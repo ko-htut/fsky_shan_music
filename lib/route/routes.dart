@@ -11,6 +11,7 @@ class Routes {
   static String albums = "/albums";
   static String play = "/play";
   static String state = "/state";
+  static String download = "/download";
 
   static void configureRoutes(Router router) {
  
@@ -20,5 +21,6 @@ class Routes {
     router.define(albums, handler: albumHandler);
     router.define(play, handler: playHandler);
     router.define(state, handler: stateHandler);
+    router.define(download, handler: downloadHandler);
   }
 }

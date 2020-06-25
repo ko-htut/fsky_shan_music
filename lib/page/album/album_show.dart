@@ -87,6 +87,6 @@ class _AlbumShowState extends State<AlbumShow> {
   }
     void playSongs(s.Song songn) {
     print(songn.source);
-    NavigatorUtil.goplay(context, songn);
+    NavigatorUtil.goplay(context);
   }
 }

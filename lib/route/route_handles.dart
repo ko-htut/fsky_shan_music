@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_fsky_music/model/album_model.dart';
 import 'package:flutter_fsky_music/model/song_model.dart' as s;
 import 'package:flutter_fsky_music/page/album/album_show.dart';
+import 'package:flutter_fsky_music/page/download/download_page.dart';
 import 'package:flutter_fsky_music/page/index.dart';
 import 'package:flutter_fsky_music/page/play/music_play_page.dart';
 import 'package:flutter_fsky_music/page/search/search_page.dart';
@@ -33,8 +34,11 @@ var albumHandler = new Handler(
 // MusicPlayPage
 var playHandler = new Handler(
     handlerFunc: (BuildContext context, Map<String, List<Object>> params) {
-        String song = params['song'].first;
-  return MusicPlayPage(song: s.Song.fromJson(FluroConvertUtils.string2map(song)));
+  return MusicPlayPage();
+});
+var downloadHandler = new Handler(
+    handlerFunc: (BuildContext context, Map<String, List<Object>> params) {
+  return DownloadPage();
 });
 var stateHandler = new Handler(
     handlerFunc: (BuildContext context, Map<String, List<Object>> params) {
