@@ -43,6 +43,7 @@ class NetUtils {
       Loading.hideLoading(context);
     }
   }
+
   static Future<Response> _post(
     BuildContext context,
     String url, {
@@ -52,8 +53,7 @@ class NetUtils {
   }) async {
     if (isShowLoading) Loading.showLoading(context);
     try {
-       return await _dio.post("$baseUrl$url", data: data);
-
+      return await _dio.post("$baseUrl$url", data: data);
     } on DioError catch (e) {
       if (e == null) {
         return Future.error(Response(data: -1));
@@ -82,15 +82,13 @@ class NetUtils {
   static Future<User> login(
       BuildContext context, String email, String password) async {
     print("$email $password");
-    var response = await _get(context, 'login', data: {
+    var response = await _post(context, 'login', data: {
       'email': email,
       'password': password,
     });
     print(response.data);
     return User.fromJson(response.data);
   }
-
-  
 
   static Future<Song> getSongData(
     BuildContext context,
@@ -103,37 +101,35 @@ class NetUtils {
   }
 
   static Future<bann.Banner> getBannerData(BuildContext context) async {
-       var response =
-        await _get(context,"banner");
+    var response = await _get(context, "banner");
     return bann.Banner.fromJson(response.data);
   }
 
-  static Future<Top> getTopSong(BuildContext context,
-      {String i}) async {
+  static Future<Top> getTopSong(BuildContext context, {String i}) async {
     var response = await _get(
       context,
       "top",
     );
     return Top.fromJson(response.data);
   }
-  static Future<Top> getSong(BuildContext context,
-      {String i}) async {
+
+  static Future<Top> getSong(BuildContext context, {String i}) async {
     var response = await _get(
       context,
       "song",
     );
     return Top.fromJson(response.data);
   }
-  static Future<ab.Album> getAlbum(BuildContext context,
-      {String i}) async {
+
+  static Future<ab.Album> getAlbum(BuildContext context, {String i}) async {
     var response = await _get(
       context,
       "album",
     );
     return ab.Album.fromJson(response.data);
   }
-  static Future<Top> getsearch(BuildContext context,
-      { String name}) async {
+
+  static Future<Top> getsearch(BuildContext context, {String name}) async {
     var response = await _post(
       context,
       "search?name=$name",

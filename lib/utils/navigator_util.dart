@@ -23,7 +23,7 @@ class NavigatorUtil {
 
   /// Login
   static void goLoginPage(BuildContext context) {
-    _navigateTo(context, Routes.login, clearStack: true);
+    _navigateTo(context, Routes.login, clearStack: false);
   }
 
   /// Index
@@ -35,15 +35,17 @@ class NavigatorUtil {
   static void goSearchPage(BuildContext context) {
     _navigateTo(context, Routes.search);
   }
-   static void gostatePage(BuildContext context) {
+
+  static void gostatePage(BuildContext context) {
     _navigateTo(context, Routes.state);
   }
+
   ///muic player page
-   static void goplay(BuildContext context) {
-    _navigateTo(context,Routes.play);
+  static void goplay(BuildContext context) {
+    _navigateTo(context, Routes.play);
   }
 
-  static void godownload(BuildContext context){
+  static void godownload(BuildContext context) {
     _navigateTo(context, Routes.download);
   }
 

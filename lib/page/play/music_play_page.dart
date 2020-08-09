@@ -10,6 +10,10 @@ import 'package:flutter_fsky_music/widget/widget_song_progress.dart';
 import 'package:flutter_screenutil/screenutil.dart';
 import 'package:provider/provider.dart';
 
+import '../../application.dart';
+import '../../model/user.dart';
+import '../../provider/user_model.dart';
+
 class MusicPlayPage extends StatefulWidget {
   MusicPlayPage({Key key}) : super(key: key);
 
@@ -18,6 +22,30 @@ class MusicPlayPage extends StatefulWidget {
 }
 
 class _MusicPlayPageState extends State<MusicPlayPage> {
+  User mydata;
+  bool user = false;
+  @override
+  void initState() {
+    super.initState();
+    clickuser();
+  }
+
+  void clickuser() async {
+    await Application.initSp();
+    UserModel userModel = Provider.of<UserModel>(context);
+    userModel.initUser(context);
+    if (userModel.user != null) {
+      setState(() {
+        user = true;
+        mydata = userModel.user;
+      });
+    } else {
+      setState(() {
+        user = false;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Consumer<SongProvider>(builder: (context, model, child) {
@@ -74,30 +102,34 @@ class _MusicPlayPageState extends State<MusicPlayPage> {
                 alignment: Alignment.bottomCenter, child: _buildPlayer(model)),
             Align(
               alignment: Alignment.center,
-              child: Padding(
-                  padding: EdgeInsets.only(top: ScreenUtil().setHeight(180)),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      // _buildMuteButtons(),
-                      InkWell(
-                        onTap: () {
-                          model.downloadFile(context);
-                        },
-                        child: Row(
-                          children: <Widget>[
-                            Icon(
-                              Icons.cloud_download,
-                              color: Colors.cyan,
+              child: user == false
+                  ? Container()
+                  : Padding(
+                      padding:
+                          EdgeInsets.only(top: ScreenUtil().setHeight(180)),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          // _buildMuteButtons(),
+                          InkWell(
+                            onTap: () {
+                              model.downloadFile(context);
+                            },
+                            child: Row(
+                              children: <Widget>[
+                                Icon(
+                                  Icons.cloud_download,
+                                  color: Colors.cyan,
+                                ),
+                                HEmptyView(10),
+                                Text("Download",
+                                    style: TextStyle(color: Colors.cyan)),
+                              ],
                             ),
-                            HEmptyView(10),
-                            Text("Download",
-                                style: TextStyle(color: Colors.cyan)),
-                          ],
-                        ),
-                      )
-                    ],
-                  )),
+                          )
+                        ],
+                      ),
+                    ),
             ),
           ],
         ),

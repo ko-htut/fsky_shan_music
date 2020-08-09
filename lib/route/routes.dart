@@ -16,6 +16,7 @@ class Routes {
   static void configureRoutes(Router router) {
  
     router.define(root, handler: splashHandler);
+    router.define(login, handler: loginHandler);
     router.define(index, handler: indexHandler);
     router.define(search, handler: searchHandler);
     router.define(albums, handler: albumHandler);
