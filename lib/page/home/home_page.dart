@@ -13,6 +13,7 @@ import 'package:flutter_fsky_music/widget/widget_play.dart';
 import 'package:flutter_fsky_music/widget/widget_play_list.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import '../../application.dart';
 import '../../widget/common_text_style.dart';
 import '../../widget/h_empty_view.dart';
 import '../../widget/v_empty_view.dart';
@@ -123,42 +124,47 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.white60,
       body: Stack(
         children: [
-          SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Container(
-                        height: ScreenUtil().setHeight(350),
-                        child: _buildBanner())),
-                VEmptyView(20),
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: ScreenUtil().setWidth(15),
+          Padding(
+            padding: EdgeInsets.only(
+                bottom:
+                    ScreenUtil().setWidth(110) + Application.bottomBarHeight),
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Container(
+                          height: ScreenUtil().setHeight(350),
+                          child: _buildBanner())),
+                  VEmptyView(20),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: ScreenUtil().setWidth(15),
+                    ),
+                    child: Text(
+                      'Top Song',
+                      style: commonTextStyle,
+                    ),
                   ),
-                  child: Text(
-                    'Top Song',
-                    style: commonTextStyle,
+                  VEmptyView(20),
+                  _topSong(),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: ScreenUtil().setWidth(15),
+                    ),
+                    child: Text(
+                      'New Song',
+                      style: commonTextStyle,
+                    ),
                   ),
-                ),
-                VEmptyView(20),
-                _topSong(),
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: ScreenUtil().setWidth(15),
-                  ),
-                  child: Text(
-                    'New Song',
-                    style: commonTextStyle,
-                  ),
-                ),
-                VEmptyView(20),
-                _newssong(),
-              ],
+                  VEmptyView(20),
+                  _newssong(),
+                ],
+              ),
             ),
           ),
-          // PlayWidget()
+          PlayWidget()
         ],
       ),
     );

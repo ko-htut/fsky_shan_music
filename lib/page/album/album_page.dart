@@ -6,7 +6,10 @@ import 'package:flutter_fsky_music/widget/common_text_style.dart';
 import 'package:flutter_fsky_music/widget/rounded_net_image.dart';
 import 'package:flutter_fsky_music/widget/v_empty_view.dart';
 import 'package:flutter_fsky_music/widget/widget_future_builder.dart';
+import 'package:flutter_fsky_music/widget/widget_play.dart';
 import 'package:flutter_screenutil/screenutil.dart';
+
+import '../../application.dart';
 
 class AlbumPage extends StatefulWidget {
   AlbumPage({Key key}) : super(key: key);
@@ -85,10 +88,19 @@ class _AlbumPageState extends State<AlbumPage> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: <Widget>[_albumlist()],
-      ),
+    return Stack(
+      children: [
+        Padding(
+          padding: EdgeInsets.only(
+              bottom: ScreenUtil().setWidth(110) + Application.bottomBarHeight),
+          child: SingleChildScrollView(
+            child: Stack(
+              children: <Widget>[_albumlist()],
+            ),
+          ),
+        ),
+        PlayWidget()
+      ],
     );
   }
 }
