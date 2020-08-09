@@ -1,5 +1,16 @@
 # Fsky music application
 
+## Feature
+
+- Login
+- Download
+- Background Music Play
+- Album List
+- Artist List
+- Search
+- Download History
+
+
 ## Overview
 
 Apiurl : http://dashboard.fskymusic.com/api/
