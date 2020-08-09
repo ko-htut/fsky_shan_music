@@ -9,6 +9,7 @@ import 'package:flutter_fsky_music/utils/navigator_util.dart';
 import 'package:flutter_fsky_music/utils/net_utils.dart';
 import 'package:flutter_fsky_music/widget/widget_future_builder.dart';
 import 'package:flutter_fsky_music/widget/widget_music_list_item.dart';
+import 'package:flutter_fsky_music/widget/widget_play.dart';
 import 'package:flutter_fsky_music/widget/widget_play_list.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -65,7 +66,7 @@ class _HomePageState extends State<HomePage> {
                     itemBuilder: (context, index) {
                       return PlayListWidget(
                         onTap: () {
-                          playSongs(model,index);
+                          playSongs(model, index);
                         },
                         text: data[index].name,
                         picUrl: data[index].cover,
@@ -77,26 +78,6 @@ class _HomePageState extends State<HomePage> {
                     scrollDirection: Axis.horizontal,
                     itemCount: data.length,
                   ));
-              // return SliverList(
-              //   delegate: SliverChildBuilderDelegate(
-              //         (context, index) {
-              //       this.data = data;
-              //       var d = data.recommend[index];
-              //       return WidgetMusicListItem(
-              //         MusicData(
-              //             mvid: d.mvid,
-              //             picUrl: d.album.picUrl,
-              //             songName: d.name,
-              //             artists:
-              //             "${d.artists.map((a) => a.name).toList().join('/')} - ${d.album.name}"),
-              //         onTap: () {
-              //           playSongs(model, index);
-              //         },
-              //       );
-              //     },
-              //     childCount: data.recommend.length,
-              //   ),
-              // );
             },
           );
         });
@@ -107,9 +88,8 @@ class _HomePageState extends State<HomePage> {
       futureFunc: NetUtils.getSong,
       builder: (context, data) {
         this.data = data;
-        return Consumer<SongProvider>(
-            builder: (context, model, child) {
-                  return ListView.separated(
+        return Consumer<SongProvider>(builder: (context, model, child) {
+          return ListView.separated(
             separatorBuilder: (context, index) {
               return VEmptyView(ScreenUtil().setWidth(100));
             },
@@ -127,13 +107,12 @@ class _HomePageState extends State<HomePage> {
                   artists: "${d.artist.artistName} : ${d.album.albumName}",
                 ),
                 onTap: () {
-                  playSongs(model,index);
+                  playSongs(model, index);
                 },
               );
             },
           );
-            }
-        );
+        });
       },
     );
   }
@@ -142,55 +121,60 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white60,
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Padding(
-                padding: const EdgeInsets.all(5.0),
-                child: Container(
-                    height: ScreenUtil().setHeight(350),
-                    child: _buildBanner())),
-            VEmptyView(20),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: ScreenUtil().setWidth(15),
-              ),
-              child: Text(
-                'Top Song',
-                style: commonTextStyle,
-              ),
+      body: Stack(
+        children: [
+          SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Container(
+                        height: ScreenUtil().setHeight(350),
+                        child: _buildBanner())),
+                VEmptyView(20),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: ScreenUtil().setWidth(15),
+                  ),
+                  child: Text(
+                    'Top Song',
+                    style: commonTextStyle,
+                  ),
+                ),
+                VEmptyView(20),
+                _topSong(),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: ScreenUtil().setWidth(15),
+                  ),
+                  child: Text(
+                    'New Song',
+                    style: commonTextStyle,
+                  ),
+                ),
+                VEmptyView(20),
+                _newssong(),
+              ],
             ),
-            VEmptyView(20),
-            _topSong(),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: ScreenUtil().setWidth(15),
-              ),
-              child: Text(
-                'New Song',
-                style: commonTextStyle,
-              ),
-            ),
-            VEmptyView(20),
-            _newssong(),
-          ],
-        ),
+          ),
+          // PlayWidget()
+        ],
       ),
     );
   }
 
-    void playSongs(SongProvider model, int index) {
+  void playSongs(SongProvider model, int index) {
     model.playSongs(
       data.data
           .map((r) => s.Song(
-                    name: r.name,
-                    artist: r.artist.artistName,
-                    album: r.album.albumName,
-                    source: r.source,
-                    id: 1,
-                    cover: r.cover,
-                    lyric: r.lyric))
+              name: r.name,
+              artist: r.artist.artistName,
+              album: r.album.albumName,
+              source: r.source,
+              id: 1,
+              cover: r.cover,
+              lyric: r.lyric))
           .toList(),
       index: index,
     );

@@ -6,6 +6,7 @@ import 'package:flutter_fsky_music/utils/utils.dart';
 import 'package:flutter_fsky_music/widget/common_text_style.dart';
 import 'package:flutter_fsky_music/widget/h_empty_view.dart';
 import 'package:flutter_fsky_music/widget/widget_img_menu.dart';
+import 'package:flutter_fsky_music/widget/widget_song_progress.dart';
 import 'package:flutter_screenutil/screenutil.dart';
 import 'package:provider/provider.dart';
 
@@ -62,59 +63,10 @@ class _MusicPlayPageState extends State<MusicPlayPage> {
               ),
               child: Container(
                 height: 550,
-                child: (model.duration != null)
-                    ? Column(
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              children: <Widget>[
-                                Text(
-                                  "${model.positionText ?? ''}",
-                                  style: commonWhiteTextStyle,
-                                ),
-                                Expanded(
-                                  child: Slider(
-                                      value: model.position?.inMilliseconds
-                                              ?.toDouble() ??
-                                          0.0,
-                                      onChanged: (double value) {
-                                        // return model.audioPlayer
-                                        //     .seek((value / 1000).roundToDouble());
-                                      },
-                                      min: 0.0,
-                                      max: model.duration.inMilliseconds
-                                          .toDouble()),
-                                ),
-                                Text(
-                                  "${model.durationText ?? ''}",
-                                  style: commonWhiteTextStyle,
-                                )
-                              ],
-                            ),
-                          ),
-                        ],
-                      )
-                    : Container(
-                        width: double.infinity,
-                        child: Center(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Container(
-                                alignment: Alignment.center,
-                                height: ScreenUtil().setWidth(200),
-                                child: CupertinoActivityIndicator(),
-                              ),
-                              HEmptyView(10),
-                              Text(
-                                "Loading . . .",
-                                style: smallWhite70TextStyle,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SongProgressWidget(model),
+                ),
               ),
               // child: _buildPlayer(),
             ),
@@ -124,30 +76,28 @@ class _MusicPlayPageState extends State<MusicPlayPage> {
               alignment: Alignment.center,
               child: Padding(
                   padding: EdgeInsets.only(top: ScreenUtil().setHeight(180)),
-                  child: (model.duration != null)
-                      ? Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      // _buildMuteButtons(),
+                      InkWell(
+                        onTap: () {
+                          model.downloadFile(context);
+                        },
+                        child: Row(
                           children: <Widget>[
-                            // _buildMuteButtons(),
-                            InkWell(
-                              onTap: (){
-                                model.downloadFile(context);
-                              },
-                              child: Row(
-                                children: <Widget>[
-                                  Icon(
-                                    Icons.cloud_download,
-                                    color: Colors.cyan,
-                                  ),
-                                  HEmptyView(10),
-                                  Text("Download",
-                                      style: TextStyle(color: Colors.cyan)),
-                                ],
-                              ),
-                            )
+                            Icon(
+                              Icons.cloud_download,
+                              color: Colors.cyan,
+                            ),
+                            HEmptyView(10),
+                            Text("Download",
+                                style: TextStyle(color: Colors.cyan)),
                           ],
-                        )
-                      : Container()),
+                        ),
+                      )
+                    ],
+                  )),
             ),
           ],
         ),
@@ -167,7 +117,6 @@ class _MusicPlayPageState extends State<MusicPlayPage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  ImageMenuWidget('images/icon_songs_circle.png', 80),
                   ImageMenuWidget(
                     'images/icon_song_left.png',
                     80,
@@ -176,7 +125,7 @@ class _MusicPlayPageState extends State<MusicPlayPage> {
                     },
                   ),
                   ImageMenuWidget(
-                    model.curState == AudioPlayerState.PAUSED
+                    model.curState == AudioPlayerState.PLAYING
                         ? 'images/icon_song_pause.png'
                         : 'images/icon_song_play.png',
                     150,
@@ -191,7 +140,6 @@ class _MusicPlayPageState extends State<MusicPlayPage> {
                       model.nextPlay();
                     },
                   ),
-                  ImageMenuWidget('images/mute.png', 80),
                 ],
               ),
             ),

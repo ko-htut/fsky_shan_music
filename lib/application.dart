@@ -4,7 +4,7 @@ import 'package:flutter_fsky_music/route/navigate_service.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class Application{
+class Application {
   static Router router;
   static GlobalKey<NavigatorState> key = GlobalKey();
   static SharedPreferences sp;
@@ -14,12 +14,11 @@ class Application{
   static double bottomBarHeight;
   static GetIt getIt = GetIt.instance;
 
-  static initSp() async{
+  static initSp() async {
     sp = await SharedPreferences.getInstance();
   }
 
-  static setupLocator(){
+  static setupLocator() {
     getIt.registerSingleton(NavigateService());
   }
-
 }
