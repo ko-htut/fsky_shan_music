@@ -19,7 +19,7 @@ For example,
 
 Top (get) : /top
 
-```javascript
+```json
 {
     "data": [
         {
@@ -44,7 +44,7 @@ Top (get) : /top
 
 Banner (get)  : /banner
 
-```javascript
+```json
 {
     "data": {
         "path": "http://dashboard.fskymusic.com/source/banner/closeup-photography-of-jukebox-21088.jpg"
@@ -54,7 +54,7 @@ Banner (get)  : /banner
 
 music details (get)  : /song
 
-```javascript
+```json
 {
     "data": [
         {
@@ -82,7 +82,7 @@ body :(form-data)
 ```
 name : articname
 ```
-```javascript
+```json
 {
     "data": [
         {
@@ -108,7 +108,7 @@ name : articname
 
 All Album (get) : /album
 
-```javascript
+```json
 {
     "data": [
         {
@@ -146,7 +146,7 @@ All Album (get) : /album
 ```
 Artist (get) : /artist
 
-```javascript
+```json
 {
     "data": [
         {

@@ -93,44 +93,44 @@ class _MusicPlayPageState extends State<MusicPlayPage> {
                 height: 550,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: SongProgressWidget(model),
+                  // child: SongProgressWidget(model),
                 ),
               ),
               // child: _buildPlayer(),
             ),
             Align(
                 alignment: Alignment.bottomCenter, child: _buildPlayer(model)),
-            Align(
-              alignment: Alignment.center,
-              child: user == false
-                  ? Container()
-                  : Padding(
-                      padding:
-                          EdgeInsets.only(top: ScreenUtil().setHeight(180)),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          // _buildMuteButtons(),
-                          InkWell(
-                            onTap: () {
-                              model.downloadFile(context);
-                            },
-                            child: Row(
-                              children: <Widget>[
-                                Icon(
-                                  Icons.cloud_download,
-                                  color: Colors.cyan,
-                                ),
-                                HEmptyView(10),
-                                Text("Download",
-                                    style: TextStyle(color: Colors.cyan)),
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-            ),
+            // Align(
+            //   alignment: Alignment.center,
+            //   child: user == false
+            //       ? Container()
+            //       : Padding(
+            //           padding:
+            //               EdgeInsets.only(top: ScreenUtil().setHeight(180)),
+            //           child: Row(
+            //             mainAxisAlignment: MainAxisAlignment.center,
+            //             children: <Widget>[
+            //               // _buildMuteButtons(),
+            //               InkWell(
+            //                 onTap: () {
+            //                   model.downloadFile(context);
+            //                 },
+            //                 child: Row(
+            //                   children: <Widget>[
+            //                     Icon(
+            //                       Icons.cloud_download,
+            //                       color: Colors.cyan,
+            //                     ),
+            //                     HEmptyView(10),
+            //                     Text("Download",
+            //                         style: TextStyle(color: Colors.cyan)),
+            //                   ],
+            //                 ),
+            //               )
+            //             ],
+            //           ),
+            //         ),
+            // ),
           ],
         ),
       );
@@ -142,6 +142,18 @@ class _MusicPlayPageState extends State<MusicPlayPage> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            Text(
+              model.curSong.name,
+              style: commonWhiteTextStyle,
+            ),
+            Text(
+              "${model.curSong.artist} : ${model.curSong.album}",
+              style: smallWhite70TextStyle,
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: ScreenUtil().setHeight(50)),
+              child: SongProgressWidget(model),
+            ),
             Padding(
               padding: EdgeInsets.only(
                   bottom: ScreenUtil().setHeight(35),
@@ -175,6 +187,35 @@ class _MusicPlayPageState extends State<MusicPlayPage> {
                 ],
               ),
             ),
+            Container(
+              child: user == false
+                  ? Container()
+                  : Padding(
+                      padding:
+                          EdgeInsets.only(top: ScreenUtil().setHeight(180)),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          InkWell(
+                            onTap: () {
+                              model.downloadFile(context);
+                            },
+                            child: Row(
+                              children: <Widget>[
+                                Icon(
+                                  Icons.cloud_download,
+                                  color: Colors.cyan,
+                                ),
+                                HEmptyView(10),
+                                Text("Download",
+                                    style: TextStyle(color: Colors.cyan)),
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+            )
           ],
         ),
       );
