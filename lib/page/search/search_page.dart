@@ -149,6 +149,7 @@ class _SearchPageState extends State<SearchPage> with TickerProviderStateMixin {
         appBar: AppBar(
           elevation: 0,
           title: Theme(
+            
             child: TextField(
               controller: _searchController,
               cursorColor: Colors.red,
