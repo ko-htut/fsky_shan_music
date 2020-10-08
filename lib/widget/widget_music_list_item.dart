@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_fsky_music/model/song_play.dart';
 import 'package:flutter_fsky_music/widget/rounded_net_image.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:marquee_widget/marquee_widget.dart';
 
 import '../application.dart';
 import 'common_text_style.dart';
@@ -21,7 +22,7 @@ class WidgetMusicListItem extends StatelessWidget {
       onTap: onTap,
       child: Container(
         width: Application.screenWidth,
-        height: ScreenUtil().setWidth(120),
+        height: ScreenUtil().setWidth(130),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -56,18 +57,22 @@ class WidgetMusicListItem extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text(
-                    _data.songName,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: commonTextStyle,
+                  Marquee(
+                                      child: Text(
+                      _data.songName,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: commonTextStyle,
+                    ),
                   ),
                   VEmptyView(10),
-                  Text(
-                    _data.artists,
-                    style: smallGrayTextStyle,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
+                  Marquee(
+                    child: Text(
+                      _data.artists,
+                      style: smallGrayTextStyle,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ),
                 ],
               ),

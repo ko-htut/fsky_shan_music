@@ -24,7 +24,7 @@ void main() {
       ChangeNotifierProvider<UserModel>(
         create: (_) => UserModel(),
       ),
-       ChangeNotifierProvider<SongProvider>(
+      ChangeNotifierProvider<SongProvider>(
         create: (_) => SongProvider()..init(),
       )
     ],
@@ -35,20 +35,23 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-     SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
-     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-       statusBarColor: Colors.transparent,
-       // statusBarIconBrightness: Brightness.light,
-     ));
+    SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      // statusBarIconBrightness: Brightness.light,
+    ));
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'F Sky',
       navigatorKey: Application.getIt<NavigateService>().key,
       theme: ThemeData(
-          brightness: Brightness.light,
-          primaryColor: Colors.white,
-          splashColor: Colors.transparent,
-          tooltipTheme: TooltipThemeData(verticalOffset: -100000)),
+        brightness: Brightness.light,
+        primaryColor: Colors.white,
+        splashColor: Colors.transparent,
+        tooltipTheme: TooltipThemeData(verticalOffset: -100000),
+        textTheme:
+            ThemeData.light().textTheme.apply(fontFamily: 'fonts/NamTeng.ttf'),
+      ),
       home: SplashPage(),
       onGenerateRoute: Application.router.generator,
     );

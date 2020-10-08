@@ -106,6 +106,8 @@ class SongProvider with ChangeNotifier {
     play();
   }
 
+  
+
   void prePlay() {
     if (curIndex <= 0) {
       curIndex = _songs.length - 1;

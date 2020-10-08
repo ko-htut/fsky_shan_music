@@ -36,8 +36,8 @@ class PlayWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
-                      Text(curSong.name, style: commonTextStyle, maxLines: 1, overflow: TextOverflow.ellipsis,),
-                      Text(curSong.artist, style: common13TextStyle,),
+                      Text(curSong.name, style: Theme.of(context).textTheme.caption, maxLines: 1, overflow: TextOverflow.ellipsis,),
+                      Text(curSong.artist, style: Theme.of(context).textTheme.caption,),
                     ],
                   ),
                 ),
@@ -58,13 +58,13 @@ class PlayWidget extends StatelessWidget {
                   ),
                 ),
                 HEmptyView(15),
-                GestureDetector(
-                  onTap: (){},
-                  child: Image.asset(
-                    'images/list.png',
-                    width: ScreenUtil().setWidth(50),
-                  ),
-                ),
+                // GestureDetector(
+                //   onTap: (){},
+                //   child: Image.asset(
+                //     'images/list.png',
+                //     width: ScreenUtil().setWidth(50),
+                //   ),
+                // ),
               ],
             ),
           );
@@ -72,7 +72,7 @@ class PlayWidget extends StatelessWidget {
 
         return Container(
           width: Application.screenWidth,
-          height: ScreenUtil().setWidth(110) + Application.bottomBarHeight,
+          height: ScreenUtil().setWidth(125) + Application.bottomBarHeight,
           decoration: BoxDecoration(
               border: Border(top: BorderSide(color: Colors.grey[200])),
               color: Colors.white),
@@ -80,8 +80,8 @@ class PlayWidget extends StatelessWidget {
           padding: EdgeInsets.symmetric(vertical: ScreenUtil().setWidth(10)),
           child: Container(
             width: Application.screenWidth,
-            height: ScreenUtil().setWidth(110),
-            padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(30)),
+            height: ScreenUtil().setWidth(125),
+            padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(10)),
             alignment: Alignment.center,
             child: child,
           ),
