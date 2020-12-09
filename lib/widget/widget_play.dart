@@ -10,6 +10,7 @@ import '../utils/navigator_util.dart';
 import 'common_text_style.dart';
 import 'h_empty_view.dart';
 import 'widget_round_img.dart';
+import 'dart:io' show Platform;
 
 class PlayWidget extends StatelessWidget {
   @override
@@ -80,7 +81,7 @@ class PlayWidget extends StatelessWidget {
 
         return Container(
           width: Application.screenWidth,
-          height: ScreenUtil().setWidth(125) + Application.bottomBarHeight,
+          height: ScreenUtil().setWidth(125),
           decoration: BoxDecoration(
               border: Border(top: BorderSide(color: Colors.grey[200])),
               color: Colors.white),
