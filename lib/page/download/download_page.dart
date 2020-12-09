@@ -27,6 +27,7 @@ class _DownloadPageState extends State<DownloadPage> {
       dls.addAll(l);
     });
   }
+
   @override
   void initState() {
     super.initState();
@@ -35,7 +36,7 @@ class _DownloadPageState extends State<DownloadPage> {
 
   @override
   Widget build(BuildContext context) {
-     return Scaffold(
+    return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: Text('Downloads'),
@@ -43,7 +44,8 @@ class _DownloadPageState extends State<DownloadPage> {
       body: dls.isEmpty ? _buildEmptyListView() : _buildBodyList(),
     );
   }
-    _buildEmptyListView() {
+
+  _buildEmptyListView() {
     return Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -157,7 +159,7 @@ class _DownloadPageState extends State<DownloadPage> {
     );
   }
 
-   _dismissibleBackground() {
+  _dismissibleBackground() {
     return Container(
       alignment: Alignment.centerRight,
       padding: EdgeInsets.only(right: 20.0),

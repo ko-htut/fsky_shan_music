@@ -3,33 +3,33 @@
 // String bannerToJson(Banner data) => json.encode(data.toJson());
 
 class Banner {
-    Data data;
+  Data data;
 
-    Banner({
-        this.data,
-    });
+  Banner({
+    this.data,
+  });
 
-    factory Banner.fromJson(Map<String, dynamic> json) => Banner(
+  factory Banner.fromJson(Map<String, dynamic> json) => Banner(
         data: Data.fromJson(json["data"]),
-    );
+      );
 
-    Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
         "data": data.toJson(),
-    };
+      };
 }
 
 class Data {
-    String path;
+  String path;
 
-    Data({
-        this.path,
-    });
+  Data({
+    this.path,
+  });
 
-    factory Data.fromJson(Map<String, dynamic> json) => Data(
+  factory Data.fromJson(Map<String, dynamic> json) => Data(
         path: json["path"],
-    );
+      );
 
-    Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
         "path": path,
-    };
+      };
 }

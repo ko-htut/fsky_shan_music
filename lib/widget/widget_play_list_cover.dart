@@ -17,14 +17,18 @@ class PlayListCoverWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.all(Radius.circular(ScreenUtil().setWidth(radius))),
+      borderRadius:
+          BorderRadius.all(Radius.circular(ScreenUtil().setWidth(radius))),
       child: Container(
         width: ScreenUtil().setWidth(width),
         height: ScreenUtil().setWidth(height ?? width),
         child: Stack(
           alignment: Alignment.topRight,
           children: <Widget>[
-            Utils.showNetImage('$url', width: ScreenUtil().setWidth(width), height: ScreenUtil().setWidth(height ?? width), fit: BoxFit.cover),
+            Utils.showNetImage('$url',
+                width: ScreenUtil().setWidth(width),
+                height: ScreenUtil().setWidth(height ?? width),
+                fit: BoxFit.cover),
             playCount == null
                 ? Container()
                 : Padding(

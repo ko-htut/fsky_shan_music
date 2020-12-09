@@ -40,10 +40,10 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
     });
   }
 
-  void goPage() async{
+  void goPage() async {
     await Application.initSp();
-     SongProvider playSongsModel = Provider.of<SongProvider>(context);
-     if (Application.sp.containsKey('playing_songs')) {
+    SongProvider playSongsModel = Provider.of<SongProvider>(context);
+    if (Application.sp.containsKey('playing_songs')) {
       List<String> songs = Application.sp.getStringList('playing_songs');
       playSongsModel.addSongs(songs
           .map((s) => Song.fromJson(FluroConvertUtils.string2map(s)))
@@ -54,7 +54,7 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
     // if (userModel.user != null) {
     //   await NetUtils.refreshLogin(context).then((value){
     //     if(value.data != -1){
-          NavigatorUtil.goindexPage(context);
+    NavigatorUtil.goindexPage(context);
     //     }
     //   });
     //   Provider.of<PlayListModel>(context).user = userModel.user;
@@ -64,7 +64,7 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    NetUtils;
+    NetUtils();
     ScreenUtil.init(context, width: 750, height: 1334);
     final size = MediaQuery.of(context).size;
     Application.screenWidth = size.width;

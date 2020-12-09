@@ -7,6 +7,7 @@ typedef ValueWidgetBuilder<T> = Widget Function(
   BuildContext context,
   T value,
 );
+
 class CustomSliverFutureBuilder<T> extends StatefulWidget {
   final ValueWidgetBuilder<T> builder;
   final Function futureFunc;

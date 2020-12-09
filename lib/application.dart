@@ -1,11 +1,11 @@
-import 'package:fluro/fluro.dart';
+import 'package:fluro/fluro.dart' as r;
 import 'package:flutter/material.dart';
 import 'package:flutter_fsky_music/route/navigate_service.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Application {
-  static Router router;
+  static r.Router router;
   static GlobalKey<NavigatorState> key = GlobalKey();
   static SharedPreferences sp;
   static double screenWidth;

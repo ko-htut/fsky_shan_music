@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_fsky_music/model/song_play.dart';
-import 'package:flutter_fsky_music/model/song_model.dart'as s;
+import 'package:flutter_fsky_music/model/song_model.dart' as s;
 import 'package:flutter_fsky_music/model/top_model.dart';
 import 'package:flutter_fsky_music/utils/navigator_util.dart';
 import 'package:flutter_fsky_music/utils/net_utils.dart';
@@ -10,6 +10,7 @@ import 'package:flutter_fsky_music/widget/widget_load_footer.dart';
 import 'package:flutter_fsky_music/widget/widget_music_list_item.dart';
 
 typedef LoadMoreWidgetBuilder<T> = Widget Function(T data);
+
 class SearchDataPage extends StatefulWidget {
   final String data;
   SearchDataPage({Key key, @required this.data}) : super(key: key);
@@ -38,34 +39,36 @@ class _SearchDataPageState extends State<SearchDataPage>
 
   void _request() async {
     if (offset > 1) _params['offset'] = offset.toString();
-    var r = await NetUtils.getsearch(context,name: widget.data);
+    var r = await NetUtils.getsearch(context, name: widget.data);
     _count = r.data.length;
     _songsData.addAll(r.data);
   }
+
   Widget _buildArtistsPage() {
     return _buildLoadMoreWidget<Datum>(_songsData, (curData) {
       return WidgetMusicListItem(
-                MusicData(
-                  picUrl: curData.cover,
-                  mvid: curData.id,
-                  index: curData.id + 1,
-                  songName: curData.name,
-                  artists: "${curData.artist.artistName} : ${curData.album.albumName}",
-                ),
-                onTap: () {
-                   playSongs(s.Song(
-                    name: curData.name,
-                    artist: curData.artist.artistName,
-                    album: curData.album.albumName,
-                    source: curData.source,
-                    id: 1,
-                    cover: curData.cover,
-                    lyric: curData.lyric));
-                },
-              );
+        MusicData(
+          picUrl: curData.cover,
+          mvid: curData.id,
+          index: curData.id + 1,
+          songName: curData.name,
+          artists: "${curData.artist.artistName} : ${curData.album.albumName}",
+        ),
+        onTap: () {
+          playSongs(s.Song(
+              name: curData.name,
+              artist: curData.artist.artistName,
+              album: curData.album.albumName,
+              source: curData.source,
+              id: 1,
+              cover: curData.cover,
+              lyric: curData.lyric));
+        },
+      );
     });
   }
-   Widget _buildLoadMoreWidget<T>(
+
+  Widget _buildLoadMoreWidget<T>(
       List<T> data, LoadMoreWidgetBuilder<T> builder) {
     return EasyRefresh.custom(
       slivers: [
@@ -84,7 +87,6 @@ class _SearchDataPageState extends State<SearchDataPage>
     );
   }
 
-
   void playSongs(s.Song songn) {
     print(songn.source);
     NavigatorUtil.goplay(context);
@@ -93,12 +95,12 @@ class _SearchDataPageState extends State<SearchDataPage>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-      if (_count == -1) {
+    if (_count == -1) {
       return Center(child: CupertinoActivityIndicator());
     }
     return Scaffold(body: Center(child: _buildArtistsPage()));
-    
   }
-   @override
+
+  @override
   bool get wantKeepAlive => true;
 }

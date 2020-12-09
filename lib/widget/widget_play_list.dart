@@ -36,11 +36,18 @@ class PlayListWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            picUrl == null ? Container() : PlayListCoverWidget(
-              picUrl,
-              playCount: playCount,
-            ),
-            index == null ? Container() : Text(index.toString(), style: commonGrayTextStyle,),
+            picUrl == null
+                ? Container()
+                : PlayListCoverWidget(
+                    picUrl,
+                    playCount: playCount,
+                  ),
+            index == null
+                ? Container()
+                : Text(
+                    index.toString(),
+                    style: commonGrayTextStyle,
+                  ),
             VEmptyView(5),
             Text(
               text,

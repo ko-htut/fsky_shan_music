@@ -52,18 +52,18 @@ class _IndexPageState extends State<IndexPage> {
         items: [
           new BottomNavigationBarItem(
             icon: Image.asset(
-                'images/musical.png',
-                height: ScreenUtil().setHeight(45),
-                width: ScreenUtil().setHeight(45),
-              ),
+              'images/musical.png',
+              height: ScreenUtil().setHeight(45),
+              width: ScreenUtil().setHeight(45),
+            ),
             title: Text('Home'),
           ),
           new BottomNavigationBarItem(
             icon: Image.asset(
-                'images/falbum.png',
-                height: ScreenUtil().setHeight(45),
-                width: ScreenUtil().setHeight(45),
-              ),
+              'images/falbum.png',
+              height: ScreenUtil().setHeight(45),
+              width: ScreenUtil().setHeight(45),
+            ),
             title: Text('Album'),
           ),
           new BottomNavigationBarItem(
@@ -71,7 +71,8 @@ class _IndexPageState extends State<IndexPage> {
                 'images/popeye.png',
                 height: ScreenUtil().setHeight(50),
                 width: ScreenUtil().setHeight(50),
-              ), title: Text('Profile'))
+              ),
+              title: Text('Profile'))
         ],
       ),
     );

@@ -12,7 +12,6 @@ import 'package:flutter_fsky_music/page/splash_page.dart';
 import 'package:flutter_fsky_music/page/statement_page.dart';
 import 'package:flutter_fsky_music/utils/fluro_convert_utils.dart';
 
-
 var splashHandler = new Handler(
     handlerFunc: (BuildContext context, Map<String, List<Object>> params) {
   return SplashPage();

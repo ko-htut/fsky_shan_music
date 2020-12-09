@@ -31,52 +31,52 @@ class _DescriptionTextWidgetState extends State<DescriptionTextWidget> {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      scrollDirection: Axis.vertical,
-     physics: FixedExtentScrollPhysics(),
-      children: <Widget>[
-      Container(
-        child: secondHalf.isEmpty
-            ? Text(
-                "${flag ? (firstHalf + "...") : (firstHalf + secondHalf)}"
-                    .replaceAll(r"\n", "\n")
-                    .replaceAll(r"\r", "")
-                    .replaceAll(r"\'", "'"),
-                style: TextStyle(
-                  fontSize: 16,
-                 // color: Colors.yellow,
-                ),
-              )
-            : Column(
-                children: <Widget>[
-                  Text(
+        scrollDirection: Axis.vertical,
+        physics: FixedExtentScrollPhysics(),
+        children: <Widget>[
+          Container(
+            child: secondHalf.isEmpty
+                ? Text(
                     "${flag ? (firstHalf + "...") : (firstHalf + secondHalf)}"
-                        .replaceAll(r"\n", "\n\n")
+                        .replaceAll(r"\n", "\n")
                         .replaceAll(r"\r", "")
                         .replaceAll(r"\'", "'"),
                     style: TextStyle(
                       fontSize: 16,
-                      color: Theme.of(context).textTheme.caption.color,
+                      // color: Colors.yellow,
                     ),
-                  ),
-                  InkWell(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: <Widget>[
-                        Text(
-                          flag ? "show more" : "show less",
-                          style: TextStyle(color: Colors.blue),
+                  )
+                : Column(
+                    children: <Widget>[
+                      Text(
+                        "${flag ? (firstHalf + "...") : (firstHalf + secondHalf)}"
+                            .replaceAll(r"\n", "\n\n")
+                            .replaceAll(r"\r", "")
+                            .replaceAll(r"\'", "'"),
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Theme.of(context).textTheme.caption.color,
                         ),
-                      ],
-                    ),
-                    onTap: () {
-                      setState(() {
-                        flag = !flag;
-                      });
-                    },
+                      ),
+                      InkWell(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: <Widget>[
+                            Text(
+                              flag ? "show more" : "show less",
+                              style: TextStyle(color: Colors.blue),
+                            ),
+                          ],
+                        ),
+                        onTap: () {
+                          setState(() {
+                            flag = !flag;
+                          });
+                        },
+                      ),
+                    ],
                   ),
-                ],
-              ),
-      ),
-    ]);
+          ),
+        ]);
   }
 }

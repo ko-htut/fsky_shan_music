@@ -36,17 +36,25 @@ class PlayWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
-                      Text(curSong.name, style: Theme.of(context).textTheme.caption, maxLines: 1, overflow: TextOverflow.ellipsis,),
-                      Text(curSong.artist, style: Theme.of(context).textTheme.caption,),
+                      Text(
+                        curSong.name,
+                        style: Theme.of(context).textTheme.caption,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      Text(
+                        curSong.artist,
+                        style: Theme.of(context).textTheme.caption,
+                      ),
                     ],
                   ),
                 ),
 
                 GestureDetector(
-                  onTap: (){
-                    if(model.curState == null){
+                  onTap: () {
+                    if (model.curState == null) {
                       model.play();
-                    }else {
+                    } else {
                       model.togglePlay();
                     }
                   },
@@ -81,7 +89,8 @@ class PlayWidget extends StatelessWidget {
           child: Container(
             width: Application.screenWidth,
             height: ScreenUtil().setWidth(125),
-            padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(10)),
+            padding:
+                EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(10)),
             alignment: Alignment.center,
             child: child,
           ),

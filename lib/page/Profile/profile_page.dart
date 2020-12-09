@@ -145,7 +145,8 @@ class _ProfilePageState extends State<ProfilePage> {
                     ? _login()
                     : ListTile(
                         title: Text("Name : ${mydata.success.details.name}"),
-                        subtitle: Text("Password : ${mydata.success.details.email}"),
+                        subtitle:
+                            Text("Password : ${mydata.success.details.email}"),
                       ),
                 ListTile(
                   onTap: () async {

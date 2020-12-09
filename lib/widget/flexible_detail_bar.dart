@@ -16,7 +16,7 @@ class FlexibleDetailBar extends StatelessWidget {
 
   static double percentage(BuildContext context) {
     _FlexibleDetail value =
-    context.inheritFromWidgetOfExactType(_FlexibleDetail);
+        context.inheritFromWidgetOfExactType(_FlexibleDetail);
     assert(value != null, 'ooh , can not find');
     return value.t;
   }
@@ -33,7 +33,7 @@ class FlexibleDetailBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final FlexibleSpaceBarSettings settings =
-    context.inheritFromWidgetOfExactType(FlexibleSpaceBarSettings);
+        context.inheritFromWidgetOfExactType(FlexibleSpaceBarSettings);
 
     final List<Widget> children = <Widget>[];
 
@@ -41,10 +41,9 @@ class FlexibleDetailBar extends StatelessWidget {
     // 0.0 -> Expanded
     // 1.0 -> Collapsed to toolbar
     final double t =
-    (1.0 - (settings.currentExtent - settings.minExtent) / deltaExtent)
-        .clamp(0.0, 1.0);
+        (1.0 - (settings.currentExtent - settings.minExtent) / deltaExtent)
+            .clamp(0.0, 1.0);
 
-    
     children.add(Positioned(
       top: -Tween<double>(begin: 0.0, end: deltaExtent / 4.0).transform(t),
       left: 0,

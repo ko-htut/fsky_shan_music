@@ -9,43 +9,43 @@ Album albumFromJson(String str) => Album.fromJson(json.decode(str));
 String albumToJson(Album data) => json.encode(data.toJson());
 
 class Album {
-    List<Datum> data;
+  List<Datum> data;
 
-    Album({
-        this.data,
-    });
+  Album({
+    this.data,
+  });
 
-    factory Album.fromJson(Map<String, dynamic> json) => Album(
+  factory Album.fromJson(Map<String, dynamic> json) => Album(
         data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
-    );
+      );
 
-    Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
         "data": List<dynamic>.from(data.map((x) => x.toJson())),
-    };
+      };
 }
 
 class Datum {
-    int id;
-    String cover;
-    String name;
-    String about;
-    DatumArtist artist;
-    bool condition;
-    List<Song> songs;
-    String detail;
+  int id;
+  String cover;
+  String name;
+  String about;
+  DatumArtist artist;
+  bool condition;
+  List<Song> songs;
+  String detail;
 
-    Datum({
-        this.id,
-        this.cover,
-        this.name,
-        this.about,
-        this.artist,
-        this.condition,
-        this.songs,
-        this.detail,
-    });
+  Datum({
+    this.id,
+    this.cover,
+    this.name,
+    this.about,
+    this.artist,
+    this.condition,
+    this.songs,
+    this.detail,
+  });
 
-    factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
         id: json["id"],
         cover: json["cover"],
         name: json["name"],
@@ -54,9 +54,9 @@ class Datum {
         condition: json["condition"],
         songs: List<Song>.from(json["songs"].map((x) => Song.fromJson(x))),
         detail: json["detail"],
-    );
+      );
 
-    Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
         "id": id,
         "cover": cover,
         "name": name,
@@ -65,51 +65,51 @@ class Datum {
         "condition": condition,
         "songs": List<dynamic>.from(songs.map((x) => x.toJson())),
         "detail": detail,
-    };
+      };
 }
 
 class DatumArtist {
-    String name;
-    String detail;
+  String name;
+  String detail;
 
-    DatumArtist({
-        this.name,
-        this.detail,
-    });
+  DatumArtist({
+    this.name,
+    this.detail,
+  });
 
-    factory DatumArtist.fromJson(Map<String, dynamic> json) => DatumArtist(
+  factory DatumArtist.fromJson(Map<String, dynamic> json) => DatumArtist(
         name: json["name"],
         detail: json["detail"],
-    );
+      );
 
-    Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
         "name": name,
         "detail": detail,
-    };
+      };
 }
 
 class Song {
-    int id;
-    String cover;
-    String name;
-    SongArtist artist;
-    AlbumClass album;
-    String lyric;
-    String source;
-    String detail;
+  int id;
+  String cover;
+  String name;
+  SongArtist artist;
+  AlbumClass album;
+  String lyric;
+  String source;
+  String detail;
 
-    Song({
-        this.id,
-        this.cover,
-        this.name,
-        this.artist,
-        this.album,
-        this.lyric,
-        this.source,
-        this.detail,
-    });
+  Song({
+    this.id,
+    this.cover,
+    this.name,
+    this.artist,
+    this.album,
+    this.lyric,
+    this.source,
+    this.detail,
+  });
 
-    factory Song.fromJson(Map<String, dynamic> json) => Song(
+  factory Song.fromJson(Map<String, dynamic> json) => Song(
         id: json["id"],
         cover: json["cover"],
         name: json["name"],
@@ -118,9 +118,9 @@ class Song {
         lyric: json["lyric"],
         source: json["source"],
         detail: json["detail"],
-    );
+      );
 
-    Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
         "id": id,
         "cover": cover,
         "name": name,
@@ -129,45 +129,45 @@ class Song {
         "lyric": lyric,
         "source": source,
         "detail": detail,
-    };
+      };
 }
 
 class AlbumClass {
-    String albumName;
-    String albumDetail;
+  String albumName;
+  String albumDetail;
 
-    AlbumClass({
-        this.albumName,
-        this.albumDetail,
-    });
+  AlbumClass({
+    this.albumName,
+    this.albumDetail,
+  });
 
-    factory AlbumClass.fromJson(Map<String, dynamic> json) => AlbumClass(
+  factory AlbumClass.fromJson(Map<String, dynamic> json) => AlbumClass(
         albumName: json["album_name"],
         albumDetail: json["album_detail"],
-    );
+      );
 
-    Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
         "album_name": albumName,
         "album_detail": albumDetail,
-    };
+      };
 }
 
 class SongArtist {
-    String artistName;
-    String artistDetail;
+  String artistName;
+  String artistDetail;
 
-    SongArtist({
-        this.artistName,
-        this.artistDetail,
-    });
+  SongArtist({
+    this.artistName,
+    this.artistDetail,
+  });
 
-    factory SongArtist.fromJson(Map<String, dynamic> json) => SongArtist(
+  factory SongArtist.fromJson(Map<String, dynamic> json) => SongArtist(
         artistName: json["artist_name"],
         artistDetail: json["artist_detail"],
-    );
+      );
 
-    Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
         "artist_name": artistName,
         "artist_detail": artistDetail,
-    };
+      };
 }

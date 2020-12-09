@@ -21,7 +21,7 @@ class _SearchPageState extends State<SearchPage> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    historySearchList = Application.sp.getStringList("search_history")??[];
+    historySearchList = Application.sp.getStringList("search_history") ?? [];
   }
 
   @override
@@ -149,7 +149,6 @@ class _SearchPageState extends State<SearchPage> with TickerProviderStateMixin {
         appBar: AppBar(
           elevation: 0,
           title: Theme(
-            
             child: TextField(
               controller: _searchController,
               cursorColor: Colors.red,

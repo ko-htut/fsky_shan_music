@@ -1,6 +1,4 @@
 PODS:
-  - audioplayer (0.0.1):
-    - Flutter
   - audioplayers (0.0.1):
     - Flutter
   - Flutter (1.0.0)
@@ -11,8 +9,6 @@ PODS:
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
-  - music_player (0.0.1):
-    - Flutter
   - path_provider (0.0.1):
     - Flutter
   - path_provider_macos (0.0.1):
@@ -38,12 +34,10 @@ PODS:
     - Flutter
 
 DEPENDENCIES:
-  - audioplayer (from `.symlinks/plugins/audioplayer/ios`)
   - audioplayers (from `.symlinks/plugins/audioplayers/ios`)
   - Flutter (from `Flutter`)
   - flutter_read_more_text (from `.symlinks/plugins/flutter_read_more_text/ios`)
   - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
-  - music_player (from `.symlinks/plugins/music_player/ios`)
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
   - path_provider_macos (from `.symlinks/plugins/path_provider_macos/ios`)
   - permission_handler (from `.symlinks/plugins/permission_handler/ios`)
@@ -61,8 +55,6 @@ SPEC REPOS:
     - FMDB
 
 EXTERNAL SOURCES:
-  audioplayer:
-    :path: ".symlinks/plugins/audioplayer/ios"
   audioplayers:
     :path: ".symlinks/plugins/audioplayers/ios"
   Flutter:
@@ -71,8 +63,6 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/flutter_read_more_text/ios"
   fluttertoast:
     :path: ".symlinks/plugins/fluttertoast/ios"
-  music_player:
-    :path: ".symlinks/plugins/music_player/ios"
   path_provider:
     :path: ".symlinks/plugins/path_provider/ios"
   path_provider_macos:
@@ -97,13 +87,11 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/url_launcher_web/ios"
 
 SPEC CHECKSUMS:
-  audioplayer: 0584f31a697e4b0bbad405ae7903d7a93585e784
   audioplayers: 84f968cea3f2deab00ec4f8ff53358b3c0b3992c
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
   flutter_read_more_text: b88a1a4b1fb97a8b79f5b0c57f6adbc618385fc7
   fluttertoast: b644586ef3b16f67fae9a1f8754cef6b2d6b634b
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
-  music_player: 6bb21c9510972d4076f6cbbd398238203fef409d
   path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
   path_provider_macos: f760a3c5b04357c380e2fddb6f9db6f3015897e0
   permission_handler: 8278954f2382902f63f00dd8828769c0bd6d511b
@@ -118,4 +106,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 1b66dae606f75376c5f2135a8290850eeb09ae83
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.10.0

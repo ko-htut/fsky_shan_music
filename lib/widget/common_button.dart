@@ -25,7 +25,8 @@ class CommonButton extends StatelessWidget {
       child: RaisedButton(
         onPressed: callback,
         color: color,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(height / 2))),
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(height / 2))),
         child: Text(
           content,
           style: TextStyle(color: Colors.white, fontSize: fontSize),

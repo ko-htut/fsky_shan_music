@@ -4,7 +4,6 @@ class MusicData {
   String songName;
   String artists;
   int index;
-  
 
   MusicData({
     this.mvid,

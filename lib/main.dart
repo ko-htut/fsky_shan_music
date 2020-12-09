@@ -1,6 +1,6 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:common_utils/common_utils.dart';
-import 'package:fluro/fluro.dart';
+import 'package:fluro/fluro.dart' as r;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_fsky_music/page/splash_page.dart';
@@ -12,7 +12,8 @@ import 'package:provider/provider.dart';
 import 'application.dart';
 
 void main() {
-  Router router = Router();
+  // 98z
+  r.Router router = r.Router();
   Routes.configureRoutes(router);
   Application.router = router;
   Application.setupLocator();
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
     SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
-      // statusBarIconBrightness: Brightness.light,
+      statusBarIconBrightness: Brightness.light,
     ));
     return MaterialApp(
       debugShowCheckedModeBanner: false,

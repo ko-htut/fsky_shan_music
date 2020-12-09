@@ -32,7 +32,6 @@ class AlbumAppBarWidget extends StatelessWidget {
       elevation: 0,
       brightness: Brightness.dark,
       iconTheme: IconThemeData(color: Colors.white),
-     
       bottom: MusicListHeader(
         title: title,
         // onTap: playOnTap,

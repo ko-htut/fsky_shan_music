@@ -12,7 +12,7 @@ class SongProgressWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left:8.0,right: 8.0),
+      padding: const EdgeInsets.only(left: 8.0, right: 8.0),
       child: StreamBuilder<String>(
         stream: model.curPositionStream,
         builder: (context, snapshot) {
@@ -34,7 +34,6 @@ class SongProgressWidget extends StatelessWidget {
   }
 
   Widget buildProgress(double curTime, String totalTime, String curTimeStr) {
-   
     return Container(
       height: ScreenUtil().setWidth(50),
       child: Row(
@@ -70,7 +69,8 @@ class SongProgressWidget extends StatelessWidget {
             ),
           ),
           Text(
-            convertDurationToString(Duration(milliseconds: int.parse(totalTime))),
+            convertDurationToString(
+                Duration(milliseconds: int.parse(totalTime))),
             style: smallWhite30TextStyle,
           ),
         ],

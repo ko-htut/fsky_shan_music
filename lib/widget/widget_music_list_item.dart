@@ -58,7 +58,7 @@ class WidgetMusicListItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Marquee(
-                                      child: Text(
+                    child: Text(
                       _data.songName,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,

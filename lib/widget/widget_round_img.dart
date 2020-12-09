@@ -18,7 +18,10 @@ class RoundImgWidget extends StatelessWidget {
               width: ScreenUtil().setWidth(width),
               height: ScreenUtil().setWidth(width),
               fit: fit)
-          : Image.asset(img, fit: fit,),
+          : Image.asset(
+              img,
+              fit: fit,
+            ),
     );
   }
 }

@@ -1,59 +1,59 @@
 class User {
-    Success success;
+  Success success;
 
-    User({
-        this.success,
-    });
+  User({
+    this.success,
+  });
 
-    factory User.fromJson(Map<String, dynamic> json) => User(
+  factory User.fromJson(Map<String, dynamic> json) => User(
         success: Success.fromJson(json["success"]),
-    );
+      );
 
-    Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
         "success": success.toJson(),
-    };
+      };
 }
 
 class Success {
-    String token;
-    Details details;
+  String token;
+  Details details;
 
-    Success({
-        this.token,
-        this.details,
-    });
+  Success({
+    this.token,
+    this.details,
+  });
 
-    factory Success.fromJson(Map<String, dynamic> json) => Success(
+  factory Success.fromJson(Map<String, dynamic> json) => Success(
         token: json["token"],
         details: Details.fromJson(json["details"]),
-    );
+      );
 
-    Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
         "token": token,
         "details": details.toJson(),
-    };
+      };
 }
 
 class Details {
-    int id;
-    String name;
-    String email;
-    dynamic emailVerifiedAt;
-    String vip;
-    DateTime createdAt;
-    DateTime updatedAt;
+  int id;
+  String name;
+  String email;
+  dynamic emailVerifiedAt;
+  String vip;
+  DateTime createdAt;
+  DateTime updatedAt;
 
-    Details({
-        this.id,
-        this.name,
-        this.email,
-        this.emailVerifiedAt,
-        this.vip,
-        this.createdAt,
-        this.updatedAt,
-    });
+  Details({
+    this.id,
+    this.name,
+    this.email,
+    this.emailVerifiedAt,
+    this.vip,
+    this.createdAt,
+    this.updatedAt,
+  });
 
-    factory Details.fromJson(Map<String, dynamic> json) => Details(
+  factory Details.fromJson(Map<String, dynamic> json) => Details(
         id: json["id"],
         name: json["name"],
         email: json["email"],
@@ -61,9 +61,9 @@ class Details {
         vip: json["vip"],
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
-    );
+      );
 
-    Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
         "id": id,
         "name": name,
         "email": email,
@@ -71,5 +71,5 @@ class Details {
         "vip": vip,
         "created_at": createdAt.toIso8601String(),
         "updated_at": updatedAt.toIso8601String(),
-    };
+      };
 }

@@ -6,22 +6,17 @@ class NumberUtils {
   static const String BILLION_UNIT = "亿";
 
   static String amountConversion(num amount) {
-
     String result = amount.toString();
 
-    if(amount > MILLION * 10 && amount <= MILLIONS){
+    if (amount > MILLION * 10 && amount <= MILLIONS) {
       result = '${(amount / MILLION).toStringAsFixed(1)}$MILLION_UNIT';
-    }else if (amount > MILLIONS && amount <= BILLION) {
-
+    } else if (amount > MILLIONS && amount <= BILLION) {
       if (amount == BILLION) {
         result = '${amount ~/ BILLION}$BILLION_UNIT';
       } else {
         result = '${amount ~/ MILLION}$MILLION_UNIT';
       }
-    }
-
-    else if (amount > BILLION) {
-
+    } else if (amount > BILLION) {
       result = '${amount ~/ BILLION}$BILLION_UNIT';
     } else {
       result = amount.toString();
@@ -29,11 +24,11 @@ class NumberUtils {
     return result;
   }
 
-  static String formatNum(num n){
-    if(n >= MILLION){
+  static String formatNum(num n) {
+    if (n >= MILLION) {
       var r = n ~/ MILLION;
       return '${r >= 10 ? 10 : r}w+';
-    }else{
+    } else {
       return '$n';
     }
   }

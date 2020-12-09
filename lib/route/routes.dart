@@ -1,7 +1,6 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter_fsky_music/route/route_handles.dart';
 
-
 class Routes {
   static String root = "/";
   static String index = "/index";
@@ -14,7 +13,6 @@ class Routes {
   static String download = "/download";
 
   static void configureRoutes(Router router) {
- 
     router.define(root, handler: splashHandler);
     router.define(login, handler: loginHandler);
     router.define(index, handler: indexHandler);
